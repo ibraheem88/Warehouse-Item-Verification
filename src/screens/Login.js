@@ -10,6 +10,7 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import {setTokenAndId} from '../state/actions/userActions';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Icon2 from 'react-native-vector-icons/Octicons';
 
 function Login(props) {
   const dispatch = useDispatch();
@@ -106,7 +107,21 @@ function Login(props) {
             style={styles.button}
             onPress={() => login()}
             testID="loginButton">
-            <Text style={styles.btnText}>Log In</Text>
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                fontSize: 15,
+              }}>
+              Log In
+            </Text>
+            {/* <Icon2
+              style={{marginLeft: 10}}
+              name={'login'}
+              color={'white'}
+              size={16}
+            /> */}
           </TouchableOpacity>
         </View>
       </View>
@@ -128,14 +143,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: 'white',
-    marginTop: 20,
-    borderRadius: 12,
-    fontSize: 20,
-    borderWidth: 1,
-    margin: 5,
     padding: 10,
-    shadowColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#4D61D6',
+    marginVertical: 20,
+    borderRadius: 12,
   },
   btnText: {
     color: 'black',

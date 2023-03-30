@@ -6,16 +6,20 @@ import {
   StyleSheet,
   ScrollView,
   ActivityIndicator,
+  RefreshControl,
+  FlatList,
 } from 'react-native';
 import OrderComponent from '../components/OrderComponent';
 import Lottie from 'lottie-react-native';
 import {useSelector} from 'react-redux';
-import {FlatList} from 'react-native-gesture-handler';
 
 const VerifiedOrders = ({navigation, route}) => {
   const [orders, setOrders] = useState([]);
   const [page, setPage] = useState(2);
+  const [refreshing, setRefreshing] = useState(false);
   const {user} = useSelector(state => state.user);
+  const [loadingPagination, setLoadingPagination] = useState(false);
+  const [loadMore, setLoadMore] = useState(true);
   const [loading, setLoading] = useState(true);
 
   const getVerifiedOrders = (p, pagination) => {
@@ -37,15 +41,43 @@ const VerifiedOrders = ({navigation, route}) => {
           } else {
             setOrders([...orders, ...res.data]);
             setPage(page + 1);
+            if (res.data.length < 10) {
+              setLoadMore(false);
+            }
           }
         }
+        setLoadingPagination(false);
+        setRefreshing(false);
         setLoading(false);
       })
       .catch(err => console.log(err, 'err'));
   };
 
   const handlePagination = () => {
-    getVerifiedOrders(page, true);
+    if (loadMore) {
+      setLoadingPagination(true);
+      getVerifiedOrders(page, true);
+    }
+  };
+
+  const EmptyComponent = (
+    <View style={styles.emptyContainer} testID="emptyComponent">
+      <Lottie
+        source={require('../../assets/empty-box')}
+        autoPlay
+        loop
+        style={{height: 200}}
+      />
+      <Text style={styles.emptyText}>No verified orders found</Text>
+    </View>
+  );
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setOrders([]);
+    setLoadMore(true);
+    getVerifiedOrders(1);
+    setPage(2);
   };
 
   useEffect(() => {
@@ -53,49 +85,55 @@ const VerifiedOrders = ({navigation, route}) => {
     setPage(2);
   }, []);
 
-  return loading ? (
-    <ActivityIndicator
-      testID="loadingIndicator"
-      style={{flex: 1, alignSelf: 'center'}}
-      size={26}
-      color={'#4D61D6'}
-    />
-  ) : orders.length > 0 ? (
-    <FlatList
-      style={styles.container}
-      testID="flatlist"
-      contentContainerStyle={styles.contentContainerStyle}
-      data={orders}
-      onEndReached={() => handlePagination()}
-      onEndReachedThreshold={0.1}
-      renderItem={({item}) => (
-        <TouchableOpacity
-          key={item.entity_id}
-          style={styles.orderContainer}
-          onPress={() => navigation.navigate('OrderDetails', {order: item})}>
-          <OrderComponent item={item} />
-        </TouchableOpacity>
+  return (
+    <View style={{flex: 1}}>
+      {loading ? (
+        <ActivityIndicator
+          testID="loadingIndicator"
+          style={{flex: 1, alignContent: 'center', backgroundColor: '#F0F5FF'}}
+          size={26}
+          color={'#4D61D6'}
+        />
+      ) : (
+        <FlatList
+          testID="flatlist"
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.contentContainerStyle}
+          refreshControl={
+            <RefreshControl
+              enabled={true}
+              colors={['#4D61D6']}
+              refreshing={refreshing}
+              onRefresh={() => onRefresh()}
+            />
+          }
+          data={orders}
+          ListEmptyComponent={EmptyComponent}
+          onEndReached={() => handlePagination()}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={() =>
+            loadingPagination && (
+              <ActivityIndicator
+                testID="loadingPaginationIndicator"
+                style={{flex: 1, alignSelf: 'center'}}
+                size={26}
+                color={'#4D61D6'}
+              />
+            )
+          }
+          renderItem={({item}) => (
+            <OrderComponent item={item} navigation={navigation} />
+          )}
+        />
       )}
-    />
-  ) : (
-    <View style={styles.emptyContainer} testID="emptyComponent">
-      <Lottie
-        source={require('../../assets/empty-box')}
-        autoPlay
-        loop
-        style={{marginBottom: 50}}
-      />
-      <Text style={styles.emptyText}>No verified orders found</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F0F5FF',
-  },
   contentContainerStyle: {
+    backgroundColor: '#F0F5FF',
+    flexGrow: 1,
     padding: 16,
   },
   orderContainer: {
@@ -118,10 +156,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emptyText: {
-    marginTop: 50,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
-    color: '#AAA',
   },
 });
 

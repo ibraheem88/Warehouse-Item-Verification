@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {setUserInfo, setOrders} from '../state/actions/userActions';
@@ -23,6 +24,7 @@ const Home = ({navigation}) => {
   const [searchOrders, setSearchOrders] = useState('');
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [loadMore, setLoadMore] = useState(true);
   const [loadingPagination, setLoadingPagination] = useState(false);
   const isFocus = useIsFocused();
@@ -46,10 +48,11 @@ const Home = ({navigation}) => {
       .then(res => res.json())
       .then(res => {
         if (res.data.length > 0) {
+          const verifiedOrders = res.data.filter(item => !item.is_verified);
           if (!pagination) {
-            setOrders(res.data);
+            setOrders(verifiedOrders);
           } else {
-            setOrders([...orders, ...res.data]);
+            setOrders([...orders, ...verifiedOrders]);
             setPage(page + 1);
             setLoadingPagination(false);
             if (res.data.length < 10) {
@@ -57,10 +60,19 @@ const Home = ({navigation}) => {
             }
           }
         }
+        setRefreshing(false);
         setLoading(false);
         setLoadingPagination(false);
       })
       .catch(err => console.log(err, 'err'));
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setLoadMore(true);
+    setOrders([]);
+    getOrders(1);
+    setPage(2);
   };
 
   const SearchOrders = page => {
@@ -94,7 +106,7 @@ const Home = ({navigation}) => {
   };
 
   const handlePagination = () => {
-    if (loadMore) {
+    if (loadMore && orders.length > 0) {
       getOrders(page, true);
     }
   };
@@ -107,7 +119,6 @@ const Home = ({navigation}) => {
     //     color={'#4D61D6'}
     //   />
     // ) :
-    searchText.length > 2 &&
     !loadingPagination && (
       <View
         style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
@@ -148,7 +159,7 @@ const Home = ({navigation}) => {
       {loading ? (
         <ActivityIndicator
           testID="loadingIndicator"
-          style={{flex: 1, alignSelf: 'center'}}
+          style={{flex: 1, alignContent: 'center', backgroundColor: '#F0F5FF'}}
           size={26}
           color={'#4D61D6'}
         />
@@ -173,7 +184,14 @@ const Home = ({navigation}) => {
                 <TextInput
                   placeholder="Search"
                   onChangeText={text => setSearchText(text)}
-                  onBlur={() => setSearchText('')}
+                  onSubmitEditing={() => {
+                    setSearchText('');
+                    setLoadMore(true);
+                    setOrders([]);
+                    getOrders(1);
+                    setPage(2);
+                  }}
+                  //onBlur={() => setSearchText('')}
                   value={searchText}
                   style={{
                     flex: 1,
@@ -212,8 +230,15 @@ const Home = ({navigation}) => {
           <FlatList
             data={searchText.length > 0 ? searchOrders : orders}
             showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                colors={['#4D61D6']}
+                refreshing={refreshing}
+                onRefresh={() => onRefresh()}
+              />
+            }
             contentContainerStyle={{flexGrow: 1, paddingBottom: 10}}
-            ListEmptyComponent={ListEmptyComponent}
+            ListEmptyComponent={searchText.length == 0 && ListEmptyComponent}
             onEndReachedThreshold={0.1}
             onEndReached={() => handlePagination()}
             ListFooterComponent={() =>

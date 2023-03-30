@@ -1,0 +1,1 @@
+{"version":3,"mappings":";;;;;;AAAA;AAAiD;EAAA;IAAAA;EAAA;AAAA;AAEjD,IAAMC,kBAAkB,GAAG,4BAAe,EAAC,oBAAoB,EAAE,KAAK,CAAC;AAAC,eAEzDA,kBAAkB;AAAAC","names":["default","HeaderShownContext","exports"],"sourceRoot":"../../src","sources":["HeaderShownContext.tsx"],"sourcesContent":[null]}

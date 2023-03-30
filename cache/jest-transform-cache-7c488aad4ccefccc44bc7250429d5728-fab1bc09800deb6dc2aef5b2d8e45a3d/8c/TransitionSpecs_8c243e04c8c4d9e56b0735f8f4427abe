@@ -1,0 +1,73 @@
+04d1067029ce0411195199d1f80817b4
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TransitionIOSSpec = exports.ScaleFromCenterAndroidSpec = exports.RevealFromBottomAndroidSpec = exports.FadeOutToBottomAndroidSpec = exports.FadeInFromBottomAndroidSpec = exports.BottomSheetSlideOutSpec = exports.BottomSheetSlideInSpec = void 0;
+var _reactNative = require("react-native");
+var TransitionIOSSpec = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 10,
+    restSpeedThreshold: 10
+  }
+};
+exports.TransitionIOSSpec = TransitionIOSSpec;
+var FadeInFromBottomAndroidSpec = {
+  animation: 'timing',
+  config: {
+    duration: 350,
+    easing: _reactNative.Easing.out(_reactNative.Easing.poly(5))
+  }
+};
+exports.FadeInFromBottomAndroidSpec = FadeInFromBottomAndroidSpec;
+var FadeOutToBottomAndroidSpec = {
+  animation: 'timing',
+  config: {
+    duration: 150,
+    easing: _reactNative.Easing.in(_reactNative.Easing.linear)
+  }
+};
+exports.FadeOutToBottomAndroidSpec = FadeOutToBottomAndroidSpec;
+var RevealFromBottomAndroidSpec = {
+  animation: 'timing',
+  config: {
+    duration: 425,
+    easing: _reactNative.Easing.bezier(0.35, 0.45, 0, 1)
+  }
+};
+exports.RevealFromBottomAndroidSpec = RevealFromBottomAndroidSpec;
+var ScaleFromCenterAndroidSpec = {
+  animation: 'timing',
+  config: {
+    duration: 400,
+    easing: _reactNative.Easing.bezier(0.35, 0.45, 0, 1)
+  }
+};
+exports.ScaleFromCenterAndroidSpec = ScaleFromCenterAndroidSpec;
+var BottomSheetSlideInSpec = {
+  animation: 'timing',
+  config: {
+    duration: 250,
+    easing: function easing(t) {
+      return Math.cos((t + 1) * Math.PI) / 2.0 + 0.5;
+    }
+  }
+};
+exports.BottomSheetSlideInSpec = BottomSheetSlideInSpec;
+var BottomSheetSlideOutSpec = {
+  animation: 'timing',
+  config: {
+    duration: 200,
+    easing: function easing(t) {
+      return t === 1.0 ? 1 : Math.pow(t, 2);
+    }
+  }
+};
+exports.BottomSheetSlideOutSpec = BottomSheetSlideOutSpec;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFPTyxJQUFNQSxpQkFBaUMsR0FBRztFQUMvQ0MsU0FBUyxFQUFFLFFBQVE7RUFDbkJDLE1BQU0sRUFBRTtJQUNOQyxTQUFTLEVBQUUsSUFBSTtJQUNmQyxPQUFPLEVBQUUsR0FBRztJQUNaQyxJQUFJLEVBQUUsQ0FBQztJQUNQQyxpQkFBaUIsRUFBRSxJQUFJO0lBQ3ZCQyx5QkFBeUIsRUFBRSxFQUFFO0lBQzdCQyxrQkFBa0IsRUFBRTtFQUN0QjtBQUNGLENBQUM7QUFFREM7QUFJTyxJQUFNQywyQkFBMkMsR0FBRztFQUN6RFQsU0FBUyxFQUFFLFFBQVE7RUFDbkJDLE1BQU0sRUFBRTtJQUNOUyxRQUFRLEVBQUUsR0FBRztJQUNiQyxNQUFNLEVBQUVDLG1CQUFNLENBQUNDLEdBQUcsQ0FBQ0QsbUJBQU0sQ0FBQ0UsSUFBSSxDQUFDLENBQUMsQ0FBQztFQUNuQztBQUNGLENBQUM7QUFFRE47QUFJTyxJQUFNTywwQkFBMEMsR0FBRztFQUN4RGYsU0FBUyxFQUFFLFFBQVE7RUFDbkJDLE1BQU0sRUFBRTtJQUNOUyxRQUFRLEVBQUUsR0FBRztJQUNiQyxNQUFNLEVBQUVDLG1CQUFNLENBQUNJLEVBQUUsQ0FBQ0osbUJBQU0sQ0FBQ0ssTUFBTTtFQUNqQztBQUNGLENBQUM7QUFFRFQ7QUFJTyxJQUFNVSwyQkFBMkMsR0FBRztFQUN6RGxCLFNBQVMsRUFBRSxRQUFRO0VBQ25CQyxNQUFNLEVBQUU7SUFDTlMsUUFBUSxFQUFFLEdBQUc7SUFHYkMsTUFBTSxFQUFFQyxtQkFBTSxDQUFDTyxNQUFNLENBQUMsSUFBSSxFQUFFLElBQUksRUFBRSxDQUFDLEVBQUUsQ0FBQztFQUN4QztBQUNGLENBQUM7QUFFRFg7QUFJTyxJQUFNWSwwQkFBMEMsR0FBRztFQUN4RHBCLFNBQVMsRUFBRSxRQUFRO0VBQ25CQyxNQUFNLEVBQUU7SUFDTlMsUUFBUSxFQUFFLEdBQUc7SUFHYkMsTUFBTSxFQUFFQyxtQkFBTSxDQUFDTyxNQUFNLENBQUMsSUFBSSxFQUFFLElBQUksRUFBRSxDQUFDLEVBQUUsQ0FBQztFQUN4QztBQUNGLENBQUM7QUFFRFg7QUFJTyxJQUFNYSxzQkFBc0MsR0FBRztFQUNwRHJCLFNBQVMsRUFBRSxRQUFRO0VBQ25CQyxNQUFNLEVBQUU7SUFDTlMsUUFBUSxFQUFFLEdBQUc7SUFFYkMsTUFBTSxFQUFHVyxpQkFBQztNQUFBLE9BQUtDLElBQUksQ0FBQ0MsR0FBRyxDQUFDLENBQUNGLENBQUMsR0FBRyxDQUFDLElBQUlDLElBQUksQ0FBQ0UsRUFBRSxDQUFDLEdBQUcsR0FBRyxHQUFHO0lBQUE7RUFDckQ7QUFDRixDQUFDO0FBRURqQjtBQUlPLElBQU1rQix1QkFBdUMsR0FBRztFQUNyRDFCLFNBQVMsRUFBRSxRQUFRO0VBQ25CQyxNQUFNLEVBQUU7SUFDTlMsUUFBUSxFQUFFLEdBQUc7SUFFYkMsTUFBTSxFQUFHVyxpQkFBQztNQUFBLE9BQU1BLENBQUMsS0FBSyxHQUFHLEdBQUcsQ0FBQyxHQUFHQyxJQUFJLENBQUNJLEdBQUcsQ0FBQ0wsQ0FBQyxFQUFFLENBQUM7SUFBQTtFQUMvQztBQUNGLENBQUM7QUFBQ2QiLCJuYW1lcyI6WyJUcmFuc2l0aW9uSU9TU3BlYyIsImFuaW1hdGlvbiIsImNvbmZpZyIsInN0aWZmbmVzcyIsImRhbXBpbmciLCJtYXNzIiwib3ZlcnNob290Q2xhbXBpbmciLCJyZXN0RGlzcGxhY2VtZW50VGhyZXNob2xkIiwicmVzdFNwZWVkVGhyZXNob2xkIiwiZXhwb3J0cyIsIkZhZGVJbkZyb21Cb3R0b21BbmRyb2lkU3BlYyIsImR1cmF0aW9uIiwiZWFzaW5nIiwiRWFzaW5nIiwib3V0IiwicG9seSIsIkZhZGVPdXRUb0JvdHRvbUFuZHJvaWRTcGVjIiwiaW4iLCJsaW5lYXIiLCJSZXZlYWxGcm9tQm90dG9tQW5kcm9pZFNwZWMiLCJiZXppZXIiLCJTY2FsZUZyb21DZW50ZXJBbmRyb2lkU3BlYyIsIkJvdHRvbVNoZWV0U2xpZGVJblNwZWMiLCJ0IiwiTWF0aCIsImNvcyIsIlBJIiwiQm90dG9tU2hlZXRTbGlkZU91dFNwZWMiLCJwb3ciXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsiVHJhbnNpdGlvblNwZWNzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

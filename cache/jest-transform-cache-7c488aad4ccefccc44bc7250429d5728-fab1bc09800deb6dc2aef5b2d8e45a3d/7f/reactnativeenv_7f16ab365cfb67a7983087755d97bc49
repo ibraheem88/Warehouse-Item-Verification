@@ -1,0 +1,28 @@
+91f4f6af693aabdef985f6d1fd26efcb
+'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var NodeEnv = require('jest-environment-node').TestEnvironment;
+module.exports = function (_NodeEnv) {
+  (0, _inherits2.default)(ReactNativeEnv, _NodeEnv);
+  var _super = _createSuper(ReactNativeEnv);
+  function ReactNativeEnv() {
+    (0, _classCallCheck2.default)(this, ReactNativeEnv);
+    return _super.apply(this, arguments);
+  }
+  (0, _createClass2.default)(ReactNativeEnv, [{
+    key: "exportConditions",
+    value: function exportConditions() {
+      return ['react-native'];
+    }
+  }]);
+  return ReactNativeEnv;
+}(NodeEnv);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJOb2RlRW52IiwicmVxdWlyZSIsIlRlc3RFbnZpcm9ubWVudCIsIm1vZHVsZSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJyZWFjdC1uYXRpdmUtZW52LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29weXJpZ2h0IChjKSBNZXRhIFBsYXRmb3JtcywgSW5jLiBhbmQgYWZmaWxpYXRlcy5cbiAqXG4gKiBUaGlzIHNvdXJjZSBjb2RlIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBNSVQgbGljZW5zZSBmb3VuZCBpbiB0aGVcbiAqIExJQ0VOU0UgZmlsZSBpbiB0aGUgcm9vdCBkaXJlY3Rvcnkgb2YgdGhpcyBzb3VyY2UgdHJlZS5cbiAqXG4gKiBAZm9ybWF0XG4gKi9cblxuJ3VzZSBzdHJpY3QnO1xuXG5jb25zdCBOb2RlRW52ID0gcmVxdWlyZSgnamVzdC1lbnZpcm9ubWVudC1ub2RlJykuVGVzdEVudmlyb25tZW50O1xuXG5tb2R1bGUuZXhwb3J0cyA9IGNsYXNzIFJlYWN0TmF0aXZlRW52IGV4dGVuZHMgTm9kZUVudiB7XG4gIGV4cG9ydENvbmRpdGlvbnMoKSB7XG4gICAgcmV0dXJuIFsncmVhY3QtbmF0aXZlJ107XG4gIH1cbn07XG4iXSwibWFwcGluZ3MiOiJBQVNBLFlBQVk7O0FBQUM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUViLElBQU1BLE9BQU8sR0FBR0MsT0FBTyxDQUFDLHVCQUF1QixDQUFDLENBQUNDLGVBQWU7QUFFaEVDLE1BQU0sQ0FBQ0MsT0FBTztFQUFBO0VBQUE7RUFBQTtJQUFBO0lBQUE7RUFBQTtFQUFBO0lBQUE7SUFBQSxPQUNaLDRCQUFtQjtNQUNqQixPQUFPLENBQUMsY0FBYyxDQUFDO0lBQ3pCO0VBQUM7RUFBQTtBQUFBLEVBSDJDSixPQUFPLENBSXBEIn0=

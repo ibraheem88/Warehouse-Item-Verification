@@ -1,0 +1,65 @@
+63439fa671e1da7e3ef1486476a996a5
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+var _excluded = ["children"];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = MaskedView;
+var React = _interopRequireWildcard(require("react"));
+var _reactNative = require("react-native");
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+var RNCMaskedView;
+try {
+  RNCMaskedView = require('@react-native-masked-view/masked-view').default;
+} catch (e) {}
+var isMaskedViewAvailable = _reactNative.UIManager.getViewManagerConfig('RNCMaskedView') != null;
+function MaskedView(_ref) {
+  var children = _ref.children,
+    rest = (0, _objectWithoutProperties2.default)(_ref, _excluded);
+  if (isMaskedViewAvailable && RNCMaskedView) {
+    return React.createElement(RNCMaskedView, rest, children);
+  }
+  return children;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBR0E7QUFDQTtBQUF5QztFQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtBQUFBO0FBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtJQUFBO01BQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQTtNQUFBO1FBQUFDO01BQUE7UUFBQUM7TUFBQTtJQUFBO0VBQUE7RUFBQUE7RUFBQTtJQUFBQztFQUFBO0VBQUE7QUFBQTtBQVN6QyxJQUFJQyxhQUF5QztBQUU3QyxJQUFJO0VBR0ZBLGFBQWEsR0FBR0MsT0FBTyxDQUFDLHVDQUF1QyxDQUFDLENBQUNMLE9BQU87QUFDMUUsQ0FBQyxDQUFDLE9BQU9NLENBQUMsRUFBRSxDQUNWO0FBR0YsSUFBTUMscUJBQXFCLEdBQ3pCQyxzQkFBUyxDQUFDQyxvQkFBb0IsQ0FBQyxlQUFlLENBQUMsSUFBSSxJQUFJO0FBRTFDLFNBQVNDLFVBQVUsT0FBK0I7RUFBQSxJQUE1QkMsUUFBUSxHQUFrQkMsS0FBMUJELFFBQVE7SUFBS0UsOENBQWFEO0VBQzdELElBQUlMLHFCQUFxQixJQUFJSCxhQUFhLEVBQUU7SUFDMUMsT0FBT1Usb0JBQUNWLGFBQWEsRUFBS1MsSUFBSSxFQUFHRixRQUFRLENBQWlCO0VBQzVEO0VBRUEsT0FBT0EsUUFBUTtBQUNqQiIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsIlJOQ01hc2tlZFZpZXciLCJyZXF1aXJlIiwiZSIsImlzTWFza2VkVmlld0F2YWlsYWJsZSIsIlVJTWFuYWdlciIsImdldFZpZXdNYW5hZ2VyQ29uZmlnIiwiTWFza2VkVmlldyIsImNoaWxkcmVuIiwiX3JlZiIsInJlc3QiLCJSZWFjdCJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJNYXNrZWRWaWV3TmF0aXZlLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

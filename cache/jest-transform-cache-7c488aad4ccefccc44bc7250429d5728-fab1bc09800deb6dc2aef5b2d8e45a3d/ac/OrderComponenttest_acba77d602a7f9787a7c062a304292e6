@@ -1,0 +1,11 @@
+3ca17c95af9bbf670ba98405baf134ea
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _reactNative = require("@testing-library/react-native");
+var _OrderComponent = _interopRequireDefault(require("./OrderComponent"));
+var _jsxRuntime = require("react/jsx-runtime");
+describe("Order Component", function () {
+  it("Render Order Component", function () {
+    (0, _reactNative.render)((0, _jsxRuntime.jsx)(_OrderComponent.default, {}));
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJkZXNjcmliZSIsIml0IiwicmVuZGVyIl0sInNvdXJjZXMiOlsiT3JkZXJDb21wb25lbnQudGVzdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyByZW5kZXIgfSBmcm9tIFwiQHRlc3RpbmctbGlicmFyeS9yZWFjdC1uYXRpdmVcIlxyXG5pbXBvcnQgT3JkZXJDb21wb25lbnQgZnJvbSBcIi4vT3JkZXJDb21wb25lbnRcIlxyXG5kZXNjcmliZShcIk9yZGVyIENvbXBvbmVudFwiLCgpPT57XHJcbiAgICBpdChcIlJlbmRlciBPcmRlciBDb21wb25lbnRcIiwoKT0+e1xyXG4gICAgICAgIHJlbmRlcig8T3JkZXJDb21wb25lbnQvPilcclxuICAgIH0pXHJcbn0pIl0sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTtBQUE2QztBQUM3Q0EsUUFBUSxDQUFDLGlCQUFpQixFQUFDLFlBQUk7RUFDM0JDLEVBQUUsQ0FBQyx3QkFBd0IsRUFBQyxZQUFJO0lBQzVCLElBQUFDLG1CQUFNLEVBQUMscUJBQUMsdUJBQWMsS0FBRSxDQUFDO0VBQzdCLENBQUMsQ0FBQztBQUNOLENBQUMsQ0FBQyJ9

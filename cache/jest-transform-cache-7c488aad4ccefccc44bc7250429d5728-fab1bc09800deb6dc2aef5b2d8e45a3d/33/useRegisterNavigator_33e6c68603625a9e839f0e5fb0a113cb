@@ -1,0 +1,72 @@
+3e4fde16c8ffbb08102fba040b0fff93
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useRegisterNavigator;
+var _nonSecure = require("nanoid/non-secure");
+var React = _interopRequireWildcard(require("react"));
+var _EnsureSingleNavigator = require("./EnsureSingleNavigator");
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useRegisterNavigator() {
+  var _React$useState = React.useState(function () {
+      return (0, _nonSecure.nanoid)();
+    }),
+    _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 1),
+    key = _React$useState2[0];
+  var container = React.useContext(_EnsureSingleNavigator.SingleNavigatorContext);
+  if (container === undefined) {
+    throw new Error("Couldn't register the navigator. Have you wrapped your app with 'NavigationContainer'?\n\nThis can also happen if there are multiple copies of '@react-navigation' packages installed.");
+  }
+  React.useEffect(function () {
+    var register = container.register,
+      unregister = container.unregister;
+    register(key);
+    return function () {
+      return unregister(key);
+    };
+  }, [container, key]);
+  return key;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQTtBQUNBO0FBRUE7QUFBaUU7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFNbEQsU0FBU0Msb0JBQW9CLEdBQUc7RUFDN0Msc0JBQWNDLEtBQUssQ0FBQ0MsUUFBUSxDQUFDO01BQUEsT0FBTSxxQkFBTSxHQUFFO0lBQUEsRUFBQztJQUFBO0lBQXJDQyxHQUFHO0VBQ1YsSUFBTUMsU0FBUyxHQUFHSCxLQUFLLENBQUNJLFVBQVUsQ0FBQ0MsNkNBQXNCLENBQUM7RUFFMUQsSUFBSUYsU0FBUyxLQUFLRyxTQUFTLEVBQUU7SUFDM0IsTUFBTSxJQUFJQyxLQUFLLENBQ2Isd0xBQXdMLENBQ3pMO0VBQ0g7RUFFQVAsS0FBSyxDQUFDUSxTQUFTLENBQUMsWUFBTTtJQUNwQixJQUFRQyxRQUFRLEdBQWlCTixTQUFTLENBQWxDTSxRQUFRO01BQUVDLGFBQWVQLFNBQVMsQ0FBeEJPO0lBRWxCRCxRQUFRLENBQUNQLEdBQUcsQ0FBQztJQUViLE9BQU87TUFBQSxPQUFNUSxVQUFVLENBQUNSLEdBQUcsQ0FBQztJQUFBO0VBQzlCLENBQUMsRUFBRSxDQUFDQyxTQUFTLEVBQUVELEdBQUcsQ0FBQyxDQUFDO0VBRXBCLE9BQU9BLEdBQUc7QUFDWiIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsInVzZVJlZ2lzdGVyTmF2aWdhdG9yIiwiUmVhY3QiLCJ1c2VTdGF0ZSIsImtleSIsImNvbnRhaW5lciIsInVzZUNvbnRleHQiLCJTaW5nbGVOYXZpZ2F0b3JDb250ZXh0IiwidW5kZWZpbmVkIiwiRXJyb3IiLCJ1c2VFZmZlY3QiLCJyZWdpc3RlciIsInVucmVnaXN0ZXIiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsidXNlUmVnaXN0ZXJOYXZpZ2F0b3IudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

@@ -1,0 +1,11 @@
+b1b6348c22d35c2667a3e97bf7f83c48
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Group;
+function Group(_) {
+  return null;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBT2UsU0FBU0EsS0FBSyxDQUczQkMsQ0FBNkMsRUFBRTtFQUUvQyxPQUFPLElBQUk7QUFDYiIsIm5hbWVzIjpbIkdyb3VwIiwiXyJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJHcm91cC50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

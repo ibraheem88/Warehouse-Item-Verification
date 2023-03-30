@@ -1,0 +1,37 @@
+16737ddd0fb6d3f6e38b8a6c643d891c
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = memoize;
+function memoize(callback) {
+  var previous;
+  var result;
+  return function () {
+    var hasChanged = false;
+    for (var _len = arguments.length, dependencies = new Array(_len), _key = 0; _key < _len; _key++) {
+      dependencies[_key] = arguments[_key];
+    }
+    if (previous) {
+      if (previous.length !== dependencies.length) {
+        hasChanged = true;
+      } else {
+        for (var i = 0; i < previous.length; i++) {
+          if (previous[i] !== dependencies[i]) {
+            hasChanged = true;
+            break;
+          }
+        }
+      }
+    } else {
+      hasChanged = true;
+    }
+    previous = dependencies;
+    if (hasChanged || result === undefined) {
+      result = callback.apply(void 0, dependencies);
+    }
+    return result;
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQWUsU0FBU0EsT0FBTyxDQUM3QkMsUUFBbUMsRUFDbkM7RUFDQSxJQUFJQyxRQUEwQjtFQUM5QixJQUFJQyxNQUEwQjtFQUU5QixPQUFPLFlBQW1DO0lBQ3hDLElBQUlDLFVBQVUsR0FBRyxLQUFLO0lBQUMsa0NBRGRDLFlBQVk7TUFBWkEsWUFBWTtJQUFBO0lBR3JCLElBQUlILFFBQVEsRUFBRTtNQUNaLElBQUlBLFFBQVEsQ0FBQ0ksTUFBTSxLQUFLRCxZQUFZLENBQUNDLE1BQU0sRUFBRTtRQUMzQ0YsVUFBVSxHQUFHLElBQUk7TUFDbkIsQ0FBQyxNQUFNO1FBQ0wsS0FBSyxJQUFJRyxDQUFDLEdBQUcsQ0FBQyxFQUFFQSxDQUFDLEdBQUdMLFFBQVEsQ0FBQ0ksTUFBTSxFQUFFQyxDQUFDLEVBQUUsRUFBRTtVQUN4QyxJQUFJTCxRQUFRLENBQUNLLENBQUMsQ0FBQyxLQUFLRixZQUFZLENBQUNFLENBQUMsQ0FBQyxFQUFFO1lBQ25DSCxVQUFVLEdBQUcsSUFBSTtZQUNqQjtVQUNGO1FBQ0Y7TUFDRjtJQUNGLENBQUMsTUFBTTtNQUNMQSxVQUFVLEdBQUcsSUFBSTtJQUNuQjtJQUVBRixRQUFRLEdBQUdHLFlBQVk7SUFFdkIsSUFBSUQsVUFBVSxJQUFJRCxNQUFNLEtBQUtLLFNBQVMsRUFBRTtNQUN0Q0wsTUFBTSxHQUFHRixRQUFRLGVBQUlJLFlBQVksQ0FBQztJQUNwQztJQUVBLE9BQU9GLE1BQU07RUFDZixDQUFDO0FBQ0giLCJuYW1lcyI6WyJtZW1vaXplIiwiY2FsbGJhY2siLCJwcmV2aW91cyIsInJlc3VsdCIsImhhc0NoYW5nZWQiLCJkZXBlbmRlbmNpZXMiLCJsZW5ndGgiLCJpIiwidW5kZWZpbmVkIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbIm1lbW9pemUudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

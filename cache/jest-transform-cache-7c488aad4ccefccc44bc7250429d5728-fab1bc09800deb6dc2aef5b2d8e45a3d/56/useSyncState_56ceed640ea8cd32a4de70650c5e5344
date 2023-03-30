@@ -1,0 +1,101 @@
+66f391a2c225b7a42f9ec330f238c970
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useSyncState;
+var React = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+var UNINTIALIZED_STATE = {};
+function useSyncState(initialState) {
+  var stateRef = React.useRef(UNINTIALIZED_STATE);
+  var isSchedulingRef = React.useRef(false);
+  var isMountedRef = React.useRef(true);
+  React.useEffect(function () {
+    isMountedRef.current = true;
+    return function () {
+      isMountedRef.current = false;
+    };
+  }, []);
+  if (stateRef.current === UNINTIALIZED_STATE) {
+    stateRef.current = typeof initialState === 'function' ? initialState() : initialState;
+  }
+  var _React$useState = React.useState(stateRef.current),
+    _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+    trackingState = _React$useState2[0],
+    setTrackingState = _React$useState2[1];
+  var getState = React.useCallback(function () {
+    return stateRef.current;
+  }, []);
+  var setState = React.useCallback(function (state) {
+    if (state === stateRef.current || !isMountedRef.current) {
+      return;
+    }
+    stateRef.current = state;
+    if (!isSchedulingRef.current) {
+      setTrackingState(state);
+    }
+  }, []);
+  var scheduleUpdate = React.useCallback(function (callback) {
+    isSchedulingRef.current = true;
+    try {
+      callback();
+    } finally {
+      isSchedulingRef.current = false;
+    }
+  }, []);
+  var flushUpdates = React.useCallback(function () {
+    if (!isMountedRef.current) {
+      return;
+    }
+    setTrackingState(stateRef.current);
+  }, []);
+  if (trackingState !== stateRef.current) {
+    setTrackingState(stateRef.current);
+  }
+  var state = stateRef.current;
+  React.useDebugValue(state);
+  return [state, getState, setState, scheduleUpdate, flushUpdates];
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQTtBQUErQjtFQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtBQUFBO0FBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtJQUFBO01BQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQTtNQUFBO1FBQUFDO01BQUE7UUFBQUM7TUFBQTtJQUFBO0VBQUE7RUFBQUE7RUFBQTtJQUFBQztFQUFBO0VBQUE7QUFBQTtBQUUvQixJQUFNQyxrQkFBa0IsR0FBRyxDQUFDLENBQUM7QUFLZCxTQUFTQyxZQUFZLENBQUlDLFlBQTRCLEVBQUU7RUFDcEUsSUFBTUMsUUFBUSxHQUFHQyxLQUFLLENBQUNDLE1BQU0sQ0FBSUwsa0JBQWtCLENBQVE7RUFDM0QsSUFBTU0sZUFBZSxHQUFHRixLQUFLLENBQUNDLE1BQU0sQ0FBQyxLQUFLLENBQUM7RUFDM0MsSUFBTUUsWUFBWSxHQUFHSCxLQUFLLENBQUNDLE1BQU0sQ0FBQyxJQUFJLENBQUM7RUFFdkNELEtBQUssQ0FBQ0ksU0FBUyxDQUFDLFlBQU07SUFDcEJELFlBQVksQ0FBQ0UsT0FBTyxHQUFHLElBQUk7SUFFM0IsT0FBTyxZQUFNO01BQ1hGLFlBQVksQ0FBQ0UsT0FBTyxHQUFHLEtBQUs7SUFDOUIsQ0FBQztFQUNILENBQUMsRUFBRSxFQUFFLENBQUM7RUFFTixJQUFJTixRQUFRLENBQUNNLE9BQU8sS0FBS1Qsa0JBQWtCLEVBQUU7SUFDM0NHLFFBQVEsQ0FBQ00sT0FBTyxHQUVkLE9BQU9QLFlBQVksS0FBSyxVQUFVLEdBQUdBLFlBQVksRUFBRSxHQUFHQSxZQUFZO0VBQ3RFO0VBRUEsc0JBQTBDRSxLQUFLLENBQUNNLFFBQVEsQ0FBQ1AsUUFBUSxDQUFDTSxPQUFPLENBQUM7SUFBQTtJQUFuRUUsYUFBYTtJQUFFQyxnQkFBZ0I7RUFFdEMsSUFBTUMsUUFBUSxHQUFHVCxLQUFLLENBQUNVLFdBQVcsQ0FBQztJQUFBLE9BQU1YLFFBQVEsQ0FBQ00sT0FBTztFQUFBLEdBQUUsRUFBRSxDQUFDO0VBRTlELElBQU1NLFFBQVEsR0FBR1gsS0FBSyxDQUFDVSxXQUFXLENBQUVFLGVBQVEsRUFBSztJQUMvQyxJQUFJQSxLQUFLLEtBQUtiLFFBQVEsQ0FBQ00sT0FBTyxJQUFJLENBQUNGLFlBQVksQ0FBQ0UsT0FBTyxFQUFFO01BQ3ZEO0lBQ0Y7SUFFQU4sUUFBUSxDQUFDTSxPQUFPLEdBQUdPLEtBQUs7SUFFeEIsSUFBSSxDQUFDVixlQUFlLENBQUNHLE9BQU8sRUFBRTtNQUM1QkcsZ0JBQWdCLENBQUNJLEtBQUssQ0FBQztJQUN6QjtFQUNGLENBQUMsRUFBRSxFQUFFLENBQUM7RUFFTixJQUFNQyxjQUFjLEdBQUdiLEtBQUssQ0FBQ1UsV0FBVyxDQUFFSSxrQkFBb0IsRUFBSztJQUNqRVosZUFBZSxDQUFDRyxPQUFPLEdBQUcsSUFBSTtJQUU5QixJQUFJO01BQ0ZTLFFBQVEsRUFBRTtJQUNaLENBQUMsU0FBUztNQUNSWixlQUFlLENBQUNHLE9BQU8sR0FBRyxLQUFLO0lBQ2pDO0VBQ0YsQ0FBQyxFQUFFLEVBQUUsQ0FBQztFQUVOLElBQU1VLFlBQVksR0FBR2YsS0FBSyxDQUFDVSxXQUFXLENBQUMsWUFBTTtJQUMzQyxJQUFJLENBQUNQLFlBQVksQ0FBQ0UsT0FBTyxFQUFFO01BQ3pCO0lBQ0Y7SUFJQUcsZ0JBQWdCLENBQUNULFFBQVEsQ0FBQ00sT0FBTyxDQUFDO0VBQ3BDLENBQUMsRUFBRSxFQUFFLENBQUM7RUFJTixJQUFJRSxhQUFhLEtBQUtSLFFBQVEsQ0FBQ00sT0FBTyxFQUFFO0lBQ3RDRyxnQkFBZ0IsQ0FBQ1QsUUFBUSxDQUFDTSxPQUFPLENBQUM7RUFDcEM7RUFFQSxJQUFNTyxLQUFLLEdBQUdiLFFBQVEsQ0FBQ00sT0FBTztFQUU5QkwsS0FBSyxDQUFDZ0IsYUFBYSxDQUFDSixLQUFLLENBQUM7RUFFMUIsT0FBTyxDQUFDQSxLQUFLLEVBQUVILFFBQVEsRUFBRUUsUUFBUSxFQUFFRSxjQUFjLEVBQUVFLFlBQVksQ0FBQztBQUNsRSIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsIlVOSU5USUFMSVpFRF9TVEFURSIsInVzZVN5bmNTdGF0ZSIsImluaXRpYWxTdGF0ZSIsInN0YXRlUmVmIiwiUmVhY3QiLCJ1c2VSZWYiLCJpc1NjaGVkdWxpbmdSZWYiLCJpc01vdW50ZWRSZWYiLCJ1c2VFZmZlY3QiLCJjdXJyZW50IiwidXNlU3RhdGUiLCJ0cmFja2luZ1N0YXRlIiwic2V0VHJhY2tpbmdTdGF0ZSIsImdldFN0YXRlIiwidXNlQ2FsbGJhY2siLCJzZXRTdGF0ZSIsInN0YXRlIiwic2NoZWR1bGVVcGRhdGUiLCJjYWxsYmFjayIsImZsdXNoVXBkYXRlcyIsInVzZURlYnVnVmFsdWUiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsidXNlU3luY1N0YXRlLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

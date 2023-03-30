@@ -1,0 +1,50 @@
+9c3fdeb15d7b262b88cc34668a8163ab
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.goBack = goBack;
+exports.navigate = navigate;
+exports.reset = reset;
+exports.setParams = setParams;
+function goBack() {
+  return {
+    type: 'GO_BACK'
+  };
+}
+function navigate() {
+  if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
+    return {
+      type: 'NAVIGATE',
+      payload: {
+        name: arguments.length <= 0 ? undefined : arguments[0],
+        params: arguments.length <= 1 ? undefined : arguments[1]
+      }
+    };
+  } else {
+    var payload = (arguments.length <= 0 ? undefined : arguments[0]) || {};
+    if (!payload.hasOwnProperty('key') && !payload.hasOwnProperty('name')) {
+      throw new Error('You need to specify name or key when calling navigate with an object as the argument. See https://reactnavigation.org/docs/navigation-actions#navigate for usage.');
+    }
+    return {
+      type: 'NAVIGATE',
+      payload: payload
+    };
+  }
+}
+function reset(state) {
+  return {
+    type: 'RESET',
+    payload: state
+  };
+}
+function setParams(params) {
+  return {
+    type: 'SET_PARAMS',
+    payload: {
+      params: params
+    }
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBZ0RPLFNBQVNBLE1BQU0sR0FBVztFQUMvQixPQUFPO0lBQUVDLElBQUksRUFBRTtFQUFVLENBQUM7QUFDNUI7QUFnQk8sU0FBU0MsUUFBUSxHQUF1QjtFQUM3QyxJQUFJLHlEQUFjLEtBQUssUUFBUSxFQUFFO0lBQy9CLE9BQU87TUFBRUQsSUFBSSxFQUFFLFVBQVU7TUFBRUUsT0FBTyxFQUFFO1FBQUVDLElBQUksa0RBQVM7UUFBRUMsTUFBTTtNQUFVO0lBQUUsQ0FBQztFQUMxRSxDQUFDLE1BQU07SUFDTCxJQUFNRixPQUFPLEdBQUcsc0RBQVcsQ0FBQyxDQUFDO0lBRTdCLElBQUksQ0FBQ0EsT0FBTyxDQUFDRyxjQUFjLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQ0gsT0FBTyxDQUFDRyxjQUFjLENBQUMsTUFBTSxDQUFDLEVBQUU7TUFDckUsTUFBTSxJQUFJQyxLQUFLLENBQ2IsbUtBQW1LLENBQ3BLO0lBQ0g7SUFFQSxPQUFPO01BQUVOLElBQUksRUFBRSxVQUFVO01BQUVFO0lBQVEsQ0FBQztFQUN0QztBQUNGO0FBRU8sU0FBU0ssS0FBSyxDQUFDQyxLQUE2QixFQUFVO0VBQzNELE9BQU87SUFBRVIsSUFBSSxFQUFFLE9BQU87SUFBRUUsT0FBTyxFQUFFTTtFQUFNLENBQUM7QUFDMUM7QUFFTyxTQUFTQyxTQUFTLENBQUNMLE1BQWMsRUFBVTtFQUNoRCxPQUFPO0lBQUVKLElBQUksRUFBRSxZQUFZO0lBQUVFLE9BQU8sRUFBRTtNQUFFRTtJQUFPO0VBQUUsQ0FBQztBQUNwRCIsIm5hbWVzIjpbImdvQmFjayIsInR5cGUiLCJuYXZpZ2F0ZSIsInBheWxvYWQiLCJuYW1lIiwicGFyYW1zIiwiaGFzT3duUHJvcGVydHkiLCJFcnJvciIsInJlc2V0Iiwic3RhdGUiLCJzZXRQYXJhbXMiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsiQ29tbW9uQWN0aW9ucy50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

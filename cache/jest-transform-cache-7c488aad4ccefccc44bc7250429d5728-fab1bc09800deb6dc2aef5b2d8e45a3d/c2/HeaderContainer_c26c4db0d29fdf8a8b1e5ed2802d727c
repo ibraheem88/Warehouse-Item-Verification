@@ -1,0 +1,152 @@
+696cfb1073ab493e38d66030a6f88851
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = HeaderContainer;
+var _elements = require("@react-navigation/elements");
+var _native = require("@react-navigation/native");
+var React = _interopRequireWildcard(require("react"));
+var _reactNative = require("react-native");
+var _HeaderStyleInterpolators = require("../../TransitionConfigs/HeaderStyleInterpolators");
+var _Header = _interopRequireDefault(require("./Header"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function HeaderContainer(_ref) {
+  var mode = _ref.mode,
+    scenes = _ref.scenes,
+    layout = _ref.layout,
+    getPreviousScene = _ref.getPreviousScene,
+    getFocusedRoute = _ref.getFocusedRoute,
+    onContentHeightChange = _ref.onContentHeightChange,
+    style = _ref.style;
+  var focusedRoute = getFocusedRoute();
+  var parentHeaderBack = React.useContext(_elements.HeaderBackContext);
+  return React.createElement(_reactNative.Animated.View, {
+    pointerEvents: "box-none",
+    style: style
+  }, scenes.slice(-3).map(function (scene, i, self) {
+    var _self, _self2;
+    if (mode === 'screen' && i !== self.length - 1 || !scene) {
+      return null;
+    }
+    var _scene$descriptor$opt = scene.descriptor.options,
+      header = _scene$descriptor$opt.header,
+      headerMode = _scene$descriptor$opt.headerMode,
+      _scene$descriptor$opt2 = _scene$descriptor$opt.headerShown,
+      headerShown = _scene$descriptor$opt2 === void 0 ? true : _scene$descriptor$opt2,
+      headerTransparent = _scene$descriptor$opt.headerTransparent,
+      headerStyleInterpolator = _scene$descriptor$opt.headerStyleInterpolator;
+    if (headerMode !== mode || !headerShown) {
+      return null;
+    }
+    var isFocused = focusedRoute.key === scene.descriptor.route.key;
+    var previousScene = getPreviousScene({
+      route: scene.descriptor.route
+    });
+    var headerBack = parentHeaderBack;
+    if (previousScene) {
+      var _previousScene$descri = previousScene.descriptor,
+        options = _previousScene$descri.options,
+        route = _previousScene$descri.route;
+      headerBack = previousScene ? {
+        title: (0, _elements.getHeaderTitle)(options, route.name)
+      } : parentHeaderBack;
+    }
+    var previousDescriptor = (_self = self[i - 1]) === null || _self === void 0 ? void 0 : _self.descriptor;
+    var nextDescriptor = (_self2 = self[i + 1]) === null || _self2 === void 0 ? void 0 : _self2.descriptor;
+    var _ref2 = (previousDescriptor === null || previousDescriptor === void 0 ? void 0 : previousDescriptor.options) || {},
+      _ref2$headerShown = _ref2.headerShown,
+      previousHeaderShown = _ref2$headerShown === void 0 ? true : _ref2$headerShown,
+      previousHeaderMode = _ref2.headerMode;
+    var nextHeaderlessScene = self.slice(i + 1).find(function (scene) {
+      var _ref3 = (scene === null || scene === void 0 ? void 0 : scene.descriptor.options) || {},
+        _ref3$headerShown = _ref3.headerShown,
+        currentHeaderShown = _ref3$headerShown === void 0 ? true : _ref3$headerShown,
+        currentHeaderMode = _ref3.headerMode;
+      return currentHeaderShown === false || currentHeaderMode === 'screen';
+    });
+    var _ref4 = (nextHeaderlessScene === null || nextHeaderlessScene === void 0 ? void 0 : nextHeaderlessScene.descriptor.options) || {},
+      nextHeaderlessGestureDirection = _ref4.gestureDirection;
+    var isHeaderStatic = (previousHeaderShown === false || previousHeaderMode === 'screen') && !nextDescriptor || nextHeaderlessScene;
+    var props = {
+      layout: layout,
+      back: headerBack,
+      progress: scene.progress,
+      options: scene.descriptor.options,
+      route: scene.descriptor.route,
+      navigation: scene.descriptor.navigation,
+      styleInterpolator: mode === 'float' ? isHeaderStatic ? nextHeaderlessGestureDirection === 'vertical' || nextHeaderlessGestureDirection === 'vertical-inverted' ? _HeaderStyleInterpolators.forSlideUp : nextHeaderlessGestureDirection === 'horizontal-inverted' ? _HeaderStyleInterpolators.forSlideRight : _HeaderStyleInterpolators.forSlideLeft : headerStyleInterpolator : _HeaderStyleInterpolators.forNoAnimation
+    };
+    return React.createElement(_native.NavigationContext.Provider, {
+      key: scene.descriptor.route.key,
+      value: scene.descriptor.navigation
+    }, React.createElement(_native.NavigationRouteContext.Provider, {
+      value: scene.descriptor.route
+    }, React.createElement(_reactNative.View, {
+      onLayout: onContentHeightChange ? function (e) {
+        var height = e.nativeEvent.layout.height;
+        onContentHeightChange({
+          route: scene.descriptor.route,
+          height: height
+        });
+      } : undefined,
+      pointerEvents: isFocused ? 'box-none' : 'none',
+      accessibilityElementsHidden: !isFocused,
+      importantForAccessibility: isFocused ? 'auto' : 'no-hide-descendants',
+      style: mode === 'float' && !isFocused || headerTransparent ? styles.header : null
+    }, header !== undefined ? header(props) : React.createElement(_Header.default, props))));
+  }));
+}
+var styles = _reactNative.StyleSheet.create({
+  header: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,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LHVCQUFVLENBQUNDLE1BQU0sQ0FBQztFQUMvQi9DLE1BQU0sRUFBRTtJQUNOZ0QsUUFBUSxFQUFFLFVBQVU7SUFDcEJDLEdBQUcsRUFBRSxDQUFDO0lBQ05DLElBQUksRUFBRSxDQUFDO0lBQ1BDLEtBQUssRUFBRTtFQUNUO0FBQ0YsQ0FBQyxDQUFDIiwibmFtZXMiOlsiZGVmYXVsdCIsIk9iamVjdCIsIm5ld09iaiIsImNhY2hlIiwiSGVhZGVyQ29udGFpbmVyIiwibW9kZSIsIl9yZWYiLCJzY2VuZXMiLCJsYXlvdXQiLCJnZXRQcmV2aW91c1NjZW5lIiwiZ2V0Rm9jdXNlZFJvdXRlIiwib25Db250ZW50SGVpZ2h0Q2hhbmdlIiwic3R5bGUiLCJmb2N1c2VkUm91dGUiLCJwYXJlbnRIZWFkZXJCYWNrIiwiUmVhY3QiLCJ1c2VDb250ZXh0IiwiSGVhZGVyQmFja0NvbnRleHQiLCJfcmVhY3ROYXRpdmUiLCJWaWV3IiwicG9pbnRlckV2ZW50cyIsInNsaWNlIiwibWFwIiwic2NlbmUiLCJpIiwic2VsZiIsImxlbmd0aCIsImRlc2NyaXB0b3IiLCJvcHRpb25zIiwiaGVhZGVyIiwiaGVhZGVyTW9kZSIsImhlYWRlclNob3duIiwiaGVhZGVyVHJhbnNwYXJlbnQiLCJoZWFkZXJTdHlsZUludGVycG9sYXRvciIsImlzRm9jdXNlZCIsImtleSIsInJvdXRlIiwicHJldmlvdXNTY2VuZSIsImhlYWRlckJhY2siLCJ0aXRsZSIsIm5hbWUiLCJwcmV2aW91c0Rlc2NyaXB0b3IiLCJfc2VsZiIsIm5leHREZXNjcmlwdG9yIiwiX3NlbGYyIiwicHJldmlvdXNIZWFkZXJTaG93biIsInByZXZpb3VzSGVhZGVyTW9kZSIsIm5leHRIZWFkZXJsZXNzU2NlbmUiLCJmaW5kIiwiY3VycmVudEhlYWRlclNob3duIiwiY3VycmVudEhlYWRlck1vZGUiLCJuZXh0SGVhZGVybGVzc0dlc3R1cmVEaXJlY3Rpb24iLCJnZXN0dXJlRGlyZWN0aW9uIiwiaXNIZWFkZXJTdGF0aWMiLCJwcm9wcyIsImJhY2siLCJwcm9ncmVzcyIsIm5hdmlnYXRpb24iLCJzdHlsZUludGVycG9sYXRvciIsImZvclNsaWRlVXAiLCJmb3JTbGlkZVJpZ2h0IiwiZm9yU2xpZGVMZWZ0IiwiZm9yTm9BbmltYXRpb24iLCJfbmF0aXZlIiwiUHJvdmlkZXIiLCJ2YWx1ZSIsIm9uTGF5b3V0IiwiZSIsImhlaWdodCIsIm5hdGl2ZUV2ZW50IiwidW5kZWZpbmVkIiwiYWNjZXNzaWJpbGl0eUVsZW1lbnRzSGlkZGVuIiwiaW1wb3J0YW50Rm9yQWNjZXNzaWJpbGl0eSIsInN0eWxlcyIsIl9IZWFkZXIiLCJTdHlsZVNoZWV0IiwiY3JlYXRlIiwicG9zaXRpb24iLCJ0b3AiLCJsZWZ0IiwicmlnaHQiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsiSGVhZGVyQ29udGFpbmVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

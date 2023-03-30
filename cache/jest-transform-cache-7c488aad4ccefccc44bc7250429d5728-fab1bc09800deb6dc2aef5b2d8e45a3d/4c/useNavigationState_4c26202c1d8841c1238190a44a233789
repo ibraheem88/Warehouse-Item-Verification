@@ -1,0 +1,75 @@
+6598ed0224bd51110881627715a21647
+"use strict";
+
+var _interopRequireDefault2 = require("@babel/runtime/helpers/interopRequireDefault");
+var _slicedToArray2 = _interopRequireDefault2(require("@babel/runtime/helpers/slicedToArray"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useNavigationState;
+var React = _interopRequireWildcard(require("react"));
+var _useNavigation = _interopRequireDefault(require("./useNavigation"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useNavigationState(selector) {
+  var navigation = (0, _useNavigation.default)();
+  var _React$useState = React.useState(function () {
+      return selector(navigation.getState());
+    }),
+    _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+    setResult = _React$useState2[1];
+  var selectorRef = React.useRef(selector);
+  React.useEffect(function () {
+    selectorRef.current = selector;
+  });
+  React.useEffect(function () {
+    var unsubscribe = navigation.addListener('state', function (e) {
+      setResult(selectorRef.current(e.data.state));
+    });
+    return unsubscribe;
+  }, [navigation]);
+  return selector(navigation.getState());
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFDQTtBQUdBO0FBQTRDO0VBQUE7SUFBQUE7RUFBQTtBQUFBO0FBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFXN0IsU0FBU0Msa0JBQWtCLENBQ3hDQyxRQUFnQyxFQUM3QjtFQUNILElBQU1DLFVBQVUsR0FBRywwQkFBYSxHQUE2QjtFQUk3RCxzQkFBc0JDLEtBQUssQ0FBQ0MsUUFBUSxDQUFDO01BQUEsT0FBTUgsUUFBUSxDQUFDQyxVQUFVLENBQUNHLFFBQVEsRUFBRSxDQUFDO0lBQUEsRUFBQztJQUFBO0lBQWxFQyxTQUFTO0VBR2xCLElBQU1DLFdBQVcsR0FBR0osS0FBSyxDQUFDSyxNQUFNLENBQUNQLFFBQVEsQ0FBQztFQUUxQ0UsS0FBSyxDQUFDTSxTQUFTLENBQUMsWUFBTTtJQUNwQkYsV0FBVyxDQUFDRyxPQUFPLEdBQUdULFFBQVE7RUFDaEMsQ0FBQyxDQUFDO0VBRUZFLEtBQUssQ0FBQ00sU0FBUyxDQUFDLFlBQU07SUFDcEIsSUFBTUUsV0FBVyxHQUFHVCxVQUFVLENBQUNVLFdBQVcsQ0FBQyxPQUFPLEVBQUdDLFdBQUMsRUFBSztNQUN6RFAsU0FBUyxDQUFDQyxXQUFXLENBQUNHLE9BQU8sQ0FBQ0csQ0FBQyxDQUFDQyxJQUFJLENBQUNDLEtBQUssQ0FBQyxDQUFDO0lBQzlDLENBQUMsQ0FBQztJQUVGLE9BQU9KLFdBQVc7RUFDcEIsQ0FBQyxFQUFFLENBQUNULFVBQVUsQ0FBQyxDQUFDO0VBRWhCLE9BQU9ELFFBQVEsQ0FBQ0MsVUFBVSxDQUFDRyxRQUFRLEVBQUUsQ0FBQztBQUN4QyIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsInVzZU5hdmlnYXRpb25TdGF0ZSIsInNlbGVjdG9yIiwibmF2aWdhdGlvbiIsIlJlYWN0IiwidXNlU3RhdGUiLCJnZXRTdGF0ZSIsInNldFJlc3VsdCIsInNlbGVjdG9yUmVmIiwidXNlUmVmIiwidXNlRWZmZWN0IiwiY3VycmVudCIsInVuc3Vic2NyaWJlIiwiYWRkTGlzdGVuZXIiLCJlIiwiZGF0YSIsInN0YXRlIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbInVzZU5hdmlnYXRpb25TdGF0ZS50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

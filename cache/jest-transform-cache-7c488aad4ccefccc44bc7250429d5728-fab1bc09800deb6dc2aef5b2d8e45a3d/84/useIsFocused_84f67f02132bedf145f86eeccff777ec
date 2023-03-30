@@ -1,0 +1,81 @@
+c2e7be10aabb514f8b5b7d5ba76392a3
+"use strict";
+
+var _interopRequireDefault2 = require("@babel/runtime/helpers/interopRequireDefault");
+var _slicedToArray2 = _interopRequireDefault2(require("@babel/runtime/helpers/slicedToArray"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useIsFocused;
+var React = _interopRequireWildcard(require("react"));
+var _useNavigation = _interopRequireDefault(require("./useNavigation"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useIsFocused() {
+  var navigation = (0, _useNavigation.default)();
+  var _ref = (0, React.useState)(navigation.isFocused),
+    _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+    isFocused = _ref2[0],
+    setIsFocused = _ref2[1];
+  var valueToReturn = navigation.isFocused();
+  if (isFocused !== valueToReturn) {
+    setIsFocused(valueToReturn);
+  }
+  React.useEffect(function () {
+    var unsubscribeFocus = navigation.addListener('focus', function () {
+      return setIsFocused(true);
+    });
+    var unsubscribeBlur = navigation.addListener('blur', function () {
+      return setIsFocused(false);
+    });
+    return function () {
+      unsubscribeFocus();
+      unsubscribeBlur();
+    };
+  }, [navigation]);
+  React.useDebugValue(valueToReturn);
+  return valueToReturn;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQTtBQUdBO0FBQTRDO0VBQUE7SUFBQUE7RUFBQTtBQUFBO0FBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFNN0IsU0FBU0MsWUFBWSxHQUFZO0VBQzlDLElBQU1DLFVBQVUsR0FBRywwQkFBYSxHQUFFO0VBQ2xDLFdBQWtDLGtCQUFRLEVBQUNBLFVBQVUsQ0FBQ0MsU0FBUyxDQUFDO0lBQUE7SUFBekRBLFNBQVM7SUFBRUMsWUFBWTtFQUU5QixJQUFNQyxhQUFhLEdBQUdILFVBQVUsQ0FBQ0MsU0FBUyxFQUFFO0VBRTVDLElBQUlBLFNBQVMsS0FBS0UsYUFBYSxFQUFFO0lBTS9CRCxZQUFZLENBQUNDLGFBQWEsQ0FBQztFQUM3QjtFQUVBQyxLQUFLLENBQUNDLFNBQVMsQ0FBQyxZQUFNO0lBQ3BCLElBQU1DLGdCQUFnQixHQUFHTixVQUFVLENBQUNPLFdBQVcsQ0FBQyxPQUFPLEVBQUU7TUFBQSxPQUN2REwsWUFBWSxDQUFDLElBQUksQ0FBQztJQUFBLEVBQ25CO0lBRUQsSUFBTU0sZUFBZSxHQUFHUixVQUFVLENBQUNPLFdBQVcsQ0FBQyxNQUFNLEVBQUU7TUFBQSxPQUNyREwsWUFBWSxDQUFDLEtBQUssQ0FBQztJQUFBLEVBQ3BCO0lBRUQsT0FBTyxZQUFNO01BQ1hJLGdCQUFnQixFQUFFO01BQ2xCRSxlQUFlLEVBQUU7SUFDbkIsQ0FBQztFQUNILENBQUMsRUFBRSxDQUFDUixVQUFVLENBQUMsQ0FBQztFQUVoQkksS0FBSyxDQUFDSyxhQUFhLENBQUNOLGFBQWEsQ0FBQztFQUVsQyxPQUFPQSxhQUFhO0FBQ3RCIiwibmFtZXMiOlsiZGVmYXVsdCIsIk9iamVjdCIsIm5ld09iaiIsImNhY2hlIiwidXNlSXNGb2N1c2VkIiwibmF2aWdhdGlvbiIsImlzRm9jdXNlZCIsInNldElzRm9jdXNlZCIsInZhbHVlVG9SZXR1cm4iLCJSZWFjdCIsInVzZUVmZmVjdCIsInVuc3Vic2NyaWJlRm9jdXMiLCJhZGRMaXN0ZW5lciIsInVuc3Vic2NyaWJlQmx1ciIsInVzZURlYnVnVmFsdWUiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsidXNlSXNGb2N1c2VkLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

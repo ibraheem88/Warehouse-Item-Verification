@@ -1,0 +1,27 @@
+ca9591da52613f61c391d28d6d469a47
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createNavigatorFactory;
+var _Group = _interopRequireDefault(require("./Group"));
+var _Screen = _interopRequireDefault(require("./Screen"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function createNavigatorFactory(Navigator) {
+  return function () {
+    if (arguments[0] !== undefined) {
+      throw new Error("Creating a navigator doesn't take an argument. Maybe you are trying to use React Navigation 4 API? See https://reactnavigation.org/docs/hello-react-navigation for the latest API and guides.");
+    }
+    return {
+      Navigator: Navigator,
+      Group: _Group.default,
+      Screen: _Screen.default
+    };
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBR0E7QUFDQTtBQUE4QjtFQUFBO0lBQUFBO0VBQUE7QUFBQTtBQVVmLFNBQVNDLHNCQUFzQixDQUs1Q0MsU0FBNkIsRUFBRTtFQUMvQixPQUFPLFlBTUw7SUFDQSxJQUFJQyxTQUFTLENBQUMsQ0FBQyxDQUFDLEtBQUtDLFNBQVMsRUFBRTtNQUM5QixNQUFNLElBQUlDLEtBQUssQ0FDYiwrTEFBK0wsQ0FDaE07SUFDSDtJQUVBLE9BQU87TUFDTEgsU0FBUyxFQUFUQSxTQUFTO01BQ1RJLEtBQUssRUFBTEEsY0FBSztNQUNMQyxNQUFNLEVBQU5BO0lBQ0YsQ0FBQztFQUNILENBQUM7QUFDSCIsIm5hbWVzIjpbImRlZmF1bHQiLCJjcmVhdGVOYXZpZ2F0b3JGYWN0b3J5IiwiTmF2aWdhdG9yIiwiYXJndW1lbnRzIiwidW5kZWZpbmVkIiwiRXJyb3IiLCJHcm91cCIsIlNjcmVlbiJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJjcmVhdGVOYXZpZ2F0b3JGYWN0b3J5LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

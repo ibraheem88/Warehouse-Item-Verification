@@ -1,0 +1,89 @@
+4ce194e0ff64633ee836b07056ed3972
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "GestureHandlerRootView", {
+  enumerable: true,
+  get: function get() {
+    return _reactNativeGestureHandler.GestureHandlerRootView;
+  }
+});
+Object.defineProperty(exports, "GestureState", {
+  enumerable: true,
+  get: function get() {
+    return _reactNativeGestureHandler.State;
+  }
+});
+exports.PanGestureHandler = PanGestureHandler;
+var React = _interopRequireWildcard(require("react"));
+var _reactNativeGestureHandler = require("react-native-gesture-handler");
+var _GestureHandlerRefContext = _interopRequireDefault(require("../utils/GestureHandlerRefContext"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+function PanGestureHandler(props) {
+  var gestureRef = React.useRef(null);
+  return React.createElement(_GestureHandlerRefContext.default.Provider, {
+    value: gestureRef
+  }, React.createElement(_reactNativeGestureHandler.PanGestureHandler, _extends({}, props, {
+    ref: gestureRef
+  })));
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFDQTtBQUtBO0FBQXlFO0VBQUE7SUFBQUE7RUFBQTtBQUFBO0FBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBQztJQUFBO01BQUE7TUFBQTtRQUFBO1VBQUFDO1FBQUE7TUFBQTtJQUFBO0lBQUE7RUFBQTtFQUFBO0FBQUE7QUFFbEUsU0FBU0MsaUJBQWlCLENBQUNDLEtBQWtDLEVBQUU7RUFDcEUsSUFBTUMsVUFBVSxHQUFHQyxLQUFLLENBQUNDLE1BQU0sQ0FBMEIsSUFBSSxDQUFDO0VBRTlELE9BQ0VELG9CQUFDRSxpQ0FBd0IsQ0FBQ0MsUUFBUTtJQUFDQyxLQUFLLEVBQUVMO0VBQVcsR0FDbkRDLG9CQUFDSyw0Q0FBdUIsZUFBS1AsS0FBSztJQUFFUSxHQUFHLEVBQUVQO0VBQVcsR0FBRyxDQUNyQjtBQUV4QyIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsIl9leHRlbmRzIiwidGFyZ2V0IiwiUGFuR2VzdHVyZUhhbmRsZXIiLCJwcm9wcyIsImdlc3R1cmVSZWYiLCJSZWFjdCIsInVzZVJlZiIsIl9HZXN0dXJlSGFuZGxlclJlZkNvbnRleHQiLCJQcm92aWRlciIsInZhbHVlIiwiX3JlYWN0TmF0aXZlR2VzdHVyZUhhbmRsZXIiLCJyZWYiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsiR2VzdHVyZUhhbmRsZXJOYXRpdmUudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

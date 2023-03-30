@@ -1,0 +1,20 @@
+ef1eb5980a566c862d96b984941a0890
+"use strict";
+
+var _ref;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initialWindowSafeAreaInsets = exports.initialWindowMetrics = void 0;
+var _NativeSafeAreaContext = _interopRequireDefault(require("./specs/NativeSafeAreaContext"));
+var _NativeSafeAreaContex, _NativeSafeAreaContex2;
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+var initialWindowMetrics = (_ref = _NativeSafeAreaContext.default === null || _NativeSafeAreaContext.default === void 0 ? void 0 : (_NativeSafeAreaContex = _NativeSafeAreaContext.default.getConstants) === null || _NativeSafeAreaContex === void 0 ? void 0 : (_NativeSafeAreaContex2 = _NativeSafeAreaContex.call(_NativeSafeAreaContext.default)) === null || _NativeSafeAreaContex2 === void 0 ? void 0 : _NativeSafeAreaContex2.initialWindowMetrics) != null ? _ref : null;
+exports.initialWindowMetrics = initialWindowMetrics;
+var initialWindowSafeAreaInsets = initialWindowMetrics === null || initialWindowMetrics === void 0 ? void 0 : initialWindowMetrics.insets;
+exports.initialWindowSafeAreaInsets = initialWindowSafeAreaInsets;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUNBO0FBQWtFO0FBQUE7RUFBQTtJQUFBQTtFQUFBO0FBQUE7QUFFM0QsSUFBTUMsb0JBQW9CLFdBQUlDLDhCQUFxQixhQUFyQkEsOEJBQXFCLGdEQUFyQkEsOEJBQXFCLENBQUVDLFlBQVksb0ZBQW5DQyx5REFBcUIsQ0FBa0IsMkRBQXZDQyx1QkFDakNKLG9CQUFvQixtQkFBSSxJQUF1QjtBQUVuREs7QUFHTyxJQUFNQywyQkFBMkIsR0FBR04sb0JBQW9CLGFBQXBCQSxvQkFBb0IsdUJBQXBCQSxvQkFBb0IsQ0FBRU8sTUFBTTtBQUFDRiIsIm5hbWVzIjpbImRlZmF1bHQiLCJpbml0aWFsV2luZG93TWV0cmljcyIsIk5hdGl2ZVNhZmVBcmVhQ29udGV4dCIsImdldENvbnN0YW50cyIsIl9OYXRpdmVTYWZlQXJlYUNvbnRleCIsIl9OYXRpdmVTYWZlQXJlYUNvbnRleDIiLCJleHBvcnRzIiwiaW5pdGlhbFdpbmRvd1NhZmVBcmVhSW5zZXRzIiwiaW5zZXRzIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbIkluaXRpYWxXaW5kb3cubmF0aXZlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

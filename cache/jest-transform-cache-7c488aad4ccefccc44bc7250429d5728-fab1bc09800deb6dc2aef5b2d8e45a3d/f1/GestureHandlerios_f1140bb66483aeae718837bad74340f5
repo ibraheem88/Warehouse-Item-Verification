@@ -1,0 +1,18 @@
+268ad699c1c55a54604c993f9f543b40
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _GestureHandlerNative = require("./GestureHandlerNative");
+Object.keys(_GestureHandlerNative).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _GestureHandlerNative[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _GestureHandlerNative[key];
+    }
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBQTtBQUFBQTtFQUFBO0VBQUE7RUFBQUE7SUFBQUM7SUFBQUM7TUFBQTtJQUFBO0VBQUE7QUFBQSIsIm5hbWVzIjpbIk9iamVjdCIsImVudW1lcmFibGUiLCJnZXQiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsiR2VzdHVyZUhhbmRsZXIuaW9zLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

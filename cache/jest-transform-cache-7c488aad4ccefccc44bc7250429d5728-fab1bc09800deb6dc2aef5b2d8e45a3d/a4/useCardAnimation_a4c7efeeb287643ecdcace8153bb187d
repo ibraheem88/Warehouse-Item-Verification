@@ -1,0 +1,61 @@
+2321b2ea4b0addeb040af107ad23dd5a
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useCardAnimation;
+var React = _interopRequireWildcard(require("react"));
+var _CardAnimationContext = _interopRequireDefault(require("./CardAnimationContext"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useCardAnimation() {
+  var animation = React.useContext(_CardAnimationContext.default);
+  if (animation === undefined) {
+    throw new Error("Couldn't find values for card animation. Are you inside a screen in Stack?");
+  }
+  return animation;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFFQTtBQUEwRDtFQUFBO0lBQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBO01BQUE7UUFBQUM7TUFBQTtRQUFBQztNQUFBO0lBQUE7RUFBQTtFQUFBQTtFQUFBO0lBQUFDO0VBQUE7RUFBQTtBQUFBO0FBRTNDLFNBQVNDLGdCQUFnQixHQUFHO0VBQ3pDLElBQU1DLFNBQVMsR0FBR0MsS0FBSyxDQUFDQyxVQUFVLENBQUNDLDZCQUFvQixDQUFDO0VBRXhELElBQUlILFNBQVMsS0FBS0ksU0FBUyxFQUFFO0lBQzNCLE1BQU0sSUFBSUMsS0FBSyxDQUNiLDRFQUE0RSxDQUM3RTtFQUNIO0VBRUEsT0FBT0wsU0FBUztBQUNsQiIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsInVzZUNhcmRBbmltYXRpb24iLCJhbmltYXRpb24iLCJSZWFjdCIsInVzZUNvbnRleHQiLCJDYXJkQW5pbWF0aW9uQ29udGV4dCIsInVuZGVmaW5lZCIsIkVycm9yIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbInVzZUNhcmRBbmltYXRpb24udHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

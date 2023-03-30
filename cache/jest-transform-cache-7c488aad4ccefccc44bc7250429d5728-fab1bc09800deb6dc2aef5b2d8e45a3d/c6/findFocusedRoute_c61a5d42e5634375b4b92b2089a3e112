@@ -1,0 +1,20 @@
+40a9881d648d6f878a24686685a795be
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = findFocusedRoute;
+function findFocusedRoute(state) {
+  var _ref;
+  var _current2, _current3;
+  var current = state;
+  while (((_current = current) === null || _current === void 0 ? void 0 : _current.routes[(_current$index = current.index) != null ? _current$index : 0].state) != null) {
+    var _current$index, _current$index2;
+    var _current;
+    current = current.routes[(_current$index2 = current.index) != null ? _current$index2 : 0].state;
+  }
+  var route = (_current2 = current) === null || _current2 === void 0 ? void 0 : _current2.routes[(_ref = (_current3 = current) === null || _current3 === void 0 ? void 0 : _current3.index) != null ? _ref : 0];
+  return route;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBRWUsU0FBU0EsZ0JBQWdCLENBQUNDLEtBQW1CLEVBQUU7RUFBQTtFQUFBO0VBQzVELElBQUlDLE9BQWlDLEdBQUdELEtBQUs7RUFFN0MsT0FBTyxvQkFBTyw2Q0FBUEUsU0FBU0MsTUFBTSxtQkFBQ0YsT0FBTyxDQUFDRyxLQUFLLDZCQUFJLENBQUMsQ0FBQyxDQUFDSixLQUFLLEtBQUksSUFBSSxFQUFFO0lBQUE7SUFBQTtJQUN4REMsT0FBTyxHQUFHQSxPQUFPLENBQUNFLE1BQU0sb0JBQUNGLE9BQU8sQ0FBQ0csS0FBSyw4QkFBSSxDQUFDLENBQUMsQ0FBQ0osS0FBSztFQUNwRDtFQUVBLElBQU1LLEtBQUssZ0JBQUdKLE9BQU8sOENBQVBLLFVBQVNILE1BQU0sU0FBQyxvQkFBTyw4Q0FBUEksVUFBU0gsS0FBSyxtQkFBSSxDQUFDLENBQUM7RUFFbEQsT0FBT0MsS0FBSztBQUNkIiwibmFtZXMiOlsiZmluZEZvY3VzZWRSb3V0ZSIsInN0YXRlIiwiY3VycmVudCIsIl9jdXJyZW50Iiwicm91dGVzIiwiaW5kZXgiLCJyb3V0ZSIsIl9jdXJyZW50MiIsIl9jdXJyZW50MyJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJmaW5kRm9jdXNlZFJvdXRlLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

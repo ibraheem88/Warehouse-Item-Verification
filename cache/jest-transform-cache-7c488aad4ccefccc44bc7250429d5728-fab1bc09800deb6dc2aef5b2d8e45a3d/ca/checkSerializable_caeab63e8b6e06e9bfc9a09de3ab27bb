@@ -1,0 +1,53 @@
+99f1a920206fee296e7b914b9f9dd2f6
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = checkSerializable;
+var checkSerializableWithoutCircularReference = function checkSerializableWithoutCircularReference(o, seen, location) {
+  if (o === undefined || o === null || typeof o === 'boolean' || typeof o === 'number' || typeof o === 'string') {
+    return {
+      serializable: true
+    };
+  }
+  if (Object.prototype.toString.call(o) !== '[object Object]' && !Array.isArray(o)) {
+    return {
+      serializable: false,
+      location: location,
+      reason: typeof o === 'function' ? 'Function' : String(o)
+    };
+  }
+  if (seen.has(o)) {
+    return {
+      serializable: false,
+      reason: 'Circular reference',
+      location: location
+    };
+  }
+  seen.add(o);
+  if (Array.isArray(o)) {
+    for (var i = 0; i < o.length; i++) {
+      var childResult = checkSerializableWithoutCircularReference(o[i], new Set(seen), [].concat((0, _toConsumableArray2.default)(location), [i]));
+      if (!childResult.serializable) {
+        return childResult;
+      }
+    }
+  } else {
+    for (var key in o) {
+      var _childResult = checkSerializableWithoutCircularReference(o[key], new Set(seen), [].concat((0, _toConsumableArray2.default)(location), [key]));
+      if (!_childResult.serializable) {
+        return _childResult;
+      }
+    }
+  }
+  return {
+    serializable: true
+  };
+};
+function checkSerializable(o) {
+  return checkSerializableWithoutCircularReference(o, new Set(), []);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBQSxJQUFNQSx5Q0FBeUMsR0FBRyxTQUE1Q0EseUNBQXlDLENBQzdDQyxDQUF5QixFQUN6QkMsSUFBYyxFQUNkQyxRQUE2QixFQU90QjtFQUNQLElBQ0VGLENBQUMsS0FBS0csU0FBUyxJQUNmSCxDQUFDLEtBQUssSUFBSSxJQUNWLE9BQU9BLENBQUMsS0FBSyxTQUFTLElBQ3RCLE9BQU9BLENBQUMsS0FBSyxRQUFRLElBQ3JCLE9BQU9BLENBQUMsS0FBSyxRQUFRLEVBQ3JCO0lBQ0EsT0FBTztNQUFFSSxZQUFZLEVBQUU7SUFBSyxDQUFDO0VBQy9CO0VBRUEsSUFDRUMsTUFBTSxDQUFDQyxTQUFTLENBQUNDLFFBQVEsQ0FBQ0MsSUFBSSxDQUFDUixDQUFDLENBQUMsS0FBSyxpQkFBaUIsSUFDdkQsQ0FBQ1MsS0FBSyxDQUFDQyxPQUFPLENBQUNWLENBQUMsQ0FBQyxFQUNqQjtJQUNBLE9BQU87TUFDTEksWUFBWSxFQUFFLEtBQUs7TUFDbkJGLFFBQVEsRUFBUkEsUUFBUTtNQUNSUyxNQUFNLEVBQUUsT0FBT1gsQ0FBQyxLQUFLLFVBQVUsR0FBRyxVQUFVLEdBQUdZLE1BQU0sQ0FBQ1osQ0FBQztJQUN6RCxDQUFDO0VBQ0g7RUFFQSxJQUFJQyxJQUFJLENBQUNZLEdBQUcsQ0FBQ2IsQ0FBQyxDQUFDLEVBQUU7SUFDZixPQUFPO01BQ0xJLFlBQVksRUFBRSxLQUFLO01BQ25CTyxNQUFNLEVBQUUsb0JBQW9CO01BQzVCVDtJQUNGLENBQUM7RUFDSDtFQUVBRCxJQUFJLENBQUNhLEdBQUcsQ0FBQ2QsQ0FBQyxDQUFDO0VBRVgsSUFBSVMsS0FBSyxDQUFDQyxPQUFPLENBQUNWLENBQUMsQ0FBQyxFQUFFO0lBQ3BCLEtBQUssSUFBSWUsQ0FBQyxHQUFHLENBQUMsRUFBRUEsQ0FBQyxHQUFHZixDQUFDLENBQUNnQixNQUFNLEVBQUVELENBQUMsRUFBRSxFQUFFO01BQ2pDLElBQU1FLFdBQVcsR0FBR2xCLHlDQUF5QyxDQUMzREMsQ0FBQyxDQUFDZSxDQUFDLENBQUMsRUFDSixJQUFJRyxHQUFHLENBQU1qQixJQUFJLENBQUMsNkNBQ2RDLFFBQVEsSUFBRWEsQ0FBQyxHQUNoQjtNQUVELElBQUksQ0FBQ0UsV0FBVyxDQUFDYixZQUFZLEVBQUU7UUFDN0IsT0FBT2EsV0FBVztNQUNwQjtJQUNGO0VBQ0YsQ0FBQyxNQUFNO0lBQ0wsS0FBSyxJQUFNRSxHQUFHLElBQUluQixDQUFDLEVBQUU7TUFDbkIsSUFBTWlCLFlBQVcsR0FBR2xCLHlDQUF5QyxDQUMzREMsQ0FBQyxDQUFDbUIsR0FBRyxDQUFDLEVBQ04sSUFBSUQsR0FBRyxDQUFNakIsSUFBSSxDQUFDLDZDQUNkQyxRQUFRLElBQUVpQixHQUFHLEdBQ2xCO01BRUQsSUFBSSxDQUFDRixZQUFXLENBQUNiLFlBQVksRUFBRTtRQUM3QixPQUFPYSxZQUFXO01BQ3BCO0lBQ0Y7RUFDRjtFQUVBLE9BQU87SUFBRWIsWUFBWSxFQUFFO0VBQUssQ0FBQztBQUMvQixDQUFDO0FBRWMsU0FBU2dCLGlCQUFpQixDQUFDcEIsQ0FBeUIsRUFBRTtFQUNuRSxPQUFPRCx5Q0FBeUMsQ0FBQ0MsQ0FBQyxFQUFFLElBQUlrQixHQUFHLEVBQU8sRUFBRSxFQUFFLENBQUM7QUFDekUiLCJuYW1lcyI6WyJjaGVja1NlcmlhbGl6YWJsZVdpdGhvdXRDaXJjdWxhclJlZmVyZW5jZSIsIm8iLCJzZWVuIiwibG9jYXRpb24iLCJ1bmRlZmluZWQiLCJzZXJpYWxpemFibGUiLCJPYmplY3QiLCJwcm90b3R5cGUiLCJ0b1N0cmluZyIsImNhbGwiLCJBcnJheSIsImlzQXJyYXkiLCJyZWFzb24iLCJTdHJpbmciLCJoYXMiLCJhZGQiLCJpIiwibGVuZ3RoIiwiY2hpbGRSZXN1bHQiLCJTZXQiLCJrZXkiLCJjaGVja1NlcmlhbGl6YWJsZSJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJjaGVja1NlcmlhbGl6YWJsZS50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

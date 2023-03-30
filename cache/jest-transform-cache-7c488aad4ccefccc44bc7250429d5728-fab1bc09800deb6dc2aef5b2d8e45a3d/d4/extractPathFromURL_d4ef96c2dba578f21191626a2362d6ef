@@ -1,0 +1,30 @@
+7cc122fe5c15320d81ee6aec8b2c84ce
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = extractPathFromURL;
+var _escapeStringRegexp = _interopRequireDefault(require("escape-string-regexp"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function extractPathFromURL(prefixes, url) {
+  for (var prefix of prefixes) {
+    var _ref;
+    var _prefix$match;
+    var protocol = (_ref = (_prefix$match = prefix.match(/^[^:]+:/)) === null || _prefix$match === void 0 ? void 0 : _prefix$match[0]) != null ? _ref : '';
+    var host = prefix.replace(new RegExp("^" + (0, _escapeStringRegexp.default)(protocol)), '').replace(/\/+/g, '/').replace(/^\//, '');
+    var prefixRegex = new RegExp("^" + (0, _escapeStringRegexp.default)(protocol) + "(/)*" + host.split('.').map(function (it) {
+      return it === '*' ? '[^/]+' : (0, _escapeStringRegexp.default)(it);
+    }).join('\\.'));
+    var normalizedURL = url.replace(/\/+/g, '/');
+    if (prefixRegex.test(normalizedURL)) {
+      return normalizedURL.replace(prefixRegex, '');
+    }
+  }
+  return undefined;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFBc0Q7RUFBQTtJQUFBQTtFQUFBO0FBQUE7QUFFdkMsU0FBU0Msa0JBQWtCLENBQUNDLFFBQWtCLEVBQUVDLEdBQVcsRUFBRTtFQUMxRSxLQUFLLElBQU1DLE1BQU0sSUFBSUYsUUFBUSxFQUFFO0lBQUE7SUFBQTtJQUM3QixJQUFNRyxRQUFRLFdBQUcsdUJBQU0sQ0FBQ0MsS0FBSyxDQUFDLFNBQVMsQ0FBQyxrREFBdkJDLGNBQTBCLENBQUMsQ0FBQyxtQkFBSSxFQUFFO0lBQ25ELElBQU1DLElBQUksR0FBR0osTUFBTSxDQUNoQkssT0FBTyxDQUFDLElBQUlDLE1BQU0sT0FBSywrQkFBa0IsRUFBQ0wsUUFBUSxDQUFFLENBQUUsRUFBRSxFQUFFLENBQUMsQ0FDM0RJLE9BQU8sQ0FBQyxNQUFNLEVBQUUsR0FBRyxDQUFDLENBQ3BCQSxPQUFPLENBQUMsS0FBSyxFQUFFLEVBQUUsQ0FBQztJQUVyQixJQUFNRSxXQUFXLEdBQUcsSUFBSUQsTUFBTSxPQUN4QiwrQkFBa0IsRUFBQ0wsUUFBUSxDQUFFLFlBQU1HLElBQUksQ0FDeENJLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FDVkMsR0FBRyxDQUFFQyxZQUFFO01BQUEsT0FBTUEsRUFBRSxLQUFLLEdBQUcsR0FBRyxPQUFPLEdBQUcsK0JBQWtCLEVBQUNBLEVBQUUsQ0FBRTtJQUFBLEVBQUMsQ0FDNURDLElBQUksQ0FBQyxLQUFLLENBQUUsQ0FDaEI7SUFFRCxJQUFNQyxhQUFhLEdBQUdiLEdBQUcsQ0FBQ00sT0FBTyxDQUFDLE1BQU0sRUFBRSxHQUFHLENBQUM7SUFFOUMsSUFBSUUsV0FBVyxDQUFDTSxJQUFJLENBQUNELGFBQWEsQ0FBQyxFQUFFO01BQ25DLE9BQU9BLGFBQWEsQ0FBQ1AsT0FBTyxDQUFDRSxXQUFXLEVBQUUsRUFBRSxDQUFDO0lBQy9DO0VBQ0Y7RUFFQSxPQUFPTyxTQUFTO0FBQ2xCIiwibmFtZXMiOlsiZGVmYXVsdCIsImV4dHJhY3RQYXRoRnJvbVVSTCIsInByZWZpeGVzIiwidXJsIiwicHJlZml4IiwicHJvdG9jb2wiLCJtYXRjaCIsIl9wcmVmaXgkbWF0Y2giLCJob3N0IiwicmVwbGFjZSIsIlJlZ0V4cCIsInByZWZpeFJlZ2V4Iiwic3BsaXQiLCJtYXAiLCJpdCIsImpvaW4iLCJub3JtYWxpemVkVVJMIiwidGVzdCIsInVuZGVmaW5lZCJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJleHRyYWN0UGF0aEZyb21VUkwudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

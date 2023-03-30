@@ -1,0 +1,118 @@
+6a638934ff1162e718022e48d87de114
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useLinkProps;
+var _core = require("@react-navigation/core");
+var React = _interopRequireWildcard(require("react"));
+var _reactNative = require("react-native");
+var _LinkingContext = _interopRequireDefault(require("./LinkingContext"));
+var _useLinkTo = _interopRequireDefault(require("./useLinkTo"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+var getStateFromParams = function getStateFromParams(params) {
+  if (params !== null && params !== void 0 && params.state) {
+    return params.state;
+  }
+  if (params !== null && params !== void 0 && params.screen) {
+    return {
+      routes: [{
+        name: params.screen,
+        params: params.params,
+        state: params.screen ? getStateFromParams(params.params) : undefined
+      }]
+    };
+  }
+  return undefined;
+};
+function useLinkProps(_ref) {
+  var _ref2;
+  var to = _ref.to,
+    action = _ref.action;
+  var root = React.useContext(_core.NavigationContainerRefContext);
+  var navigation = React.useContext(_core.NavigationHelpersContext);
+  var _React$useContext = React.useContext(_LinkingContext.default),
+    options = _React$useContext.options;
+  var linkTo = (0, _useLinkTo.default)();
+  var onPress = function onPress(e) {
+    var _e$currentTarget;
+    var shouldHandle = false;
+    if (_reactNative.Platform.OS !== 'web' || !e) {
+      shouldHandle = e ? !e.defaultPrevented : true;
+    } else if (!e.defaultPrevented && !(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) && (e.button == null || e.button === 0) && [undefined, null, '', 'self'].includes((_e$currentTarget = e.currentTarget) === null || _e$currentTarget === void 0 ? void 0 : _e$currentTarget.target)) {
+      e.preventDefault();
+      shouldHandle = true;
+    }
+    if (shouldHandle) {
+      if (action) {
+        if (navigation) {
+          navigation.dispatch(action);
+        } else if (root) {
+          root.dispatch(action);
+        } else {
+          throw new Error("Couldn't find a navigation object. Is your component inside NavigationContainer?");
+        }
+      } else {
+        linkTo(to);
+      }
+    }
+  };
+  var getPathFromStateHelper = (_ref2 = options === null || options === void 0 ? void 0 : options.getPathFromState) != null ? _ref2 : _core.getPathFromState;
+  var href = typeof to === 'string' ? to : getPathFromStateHelper({
+    routes: [{
+      name: to.screen,
+      params: to.params,
+      state: getStateFromParams(to.params)
+    }]
+  }, options === null || options === void 0 ? void 0 : options.config);
+  return {
+    href: href,
+    accessibilityRole: 'link',
+    onPress: onPress
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,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QUFLLENBQ2Isa0ZBQWtGLENBQ25GO1FBQ0g7TUFDRixDQUFDLE1BQU07UUFDTGxCLE1BQU0sQ0FBQ1gsRUFBRSxDQUFDO01BQ1o7SUFDRjtFQUNGLENBQUM7RUFFRCxJQUFNOEIsc0JBQXNCLFlBQUdwQixPQUFPLGFBQVBBLE9BQU8sdUJBQVBBLE9BQU8sQ0FBRXFCLGdCQUFnQixvQkFBSUEsc0JBQWdCO0VBRTVFLElBQU1DLElBQUksR0FDUixPQUFPaEMsRUFBRSxLQUFLLFFBQVEsR0FDbEJBLEVBQUUsR0FDRjhCLHNCQUFzQixDQUNwQjtJQUNFbEMsTUFBTSxFQUFFLENBQ047TUFDRUMsSUFBSSxFQUFFRyxFQUFFLENBQUNMLE1BQU07TUFFZkYsTUFBTSxFQUFFTyxFQUFFLENBQUNQLE1BQU07TUFFakJDLEtBQUssRUFBRUYsa0JBQWtCLENBQUNRLEVBQUUsQ0FBQ1AsTUFBTTtJQUNyQyxDQUFDO0VBRUwsQ0FBQyxFQUNEaUIsT0FBTyxhQUFQQSxPQUFPLHVCQUFQQSxPQUFPLENBQUV1QixNQUFNLENBQ2hCO0VBRVAsT0FBTztJQUNMRCxJQUFJLEVBQUpBLElBQUk7SUFDSkUsaUJBQWlCLEVBQUUsTUFBZTtJQUNsQ3RCO0VBQ0YsQ0FBQztBQUNIIiwibmFtZXMiOlsiZGVmYXVsdCIsIk9iamVjdCIsIm5ld09iaiIsImNhY2hlIiwiZ2V0U3RhdGVGcm9tUGFyYW1zIiwicGFyYW1zIiwic3RhdGUiLCJzY3JlZW4iLCJyb3V0ZXMiLCJuYW1lIiwidW5kZWZpbmVkIiwidXNlTGlua1Byb3BzIiwidG8iLCJfcmVmIiwiYWN0aW9uIiwicm9vdCIsIlJlYWN0IiwidXNlQ29udGV4dCIsIk5hdmlnYXRpb25Db250YWluZXJSZWZDb250ZXh0IiwibmF2aWdhdGlvbiIsIk5hdmlnYXRpb25IZWxwZXJzQ29udGV4dCIsIkxpbmtpbmdDb250ZXh0Iiwib3B0aW9ucyIsImxpbmtUbyIsIm9uUHJlc3MiLCJlIiwic2hvdWxkSGFuZGxlIiwiUGxhdGZvcm0iLCJPUyIsImRlZmF1bHRQcmV2ZW50ZWQiLCJtZXRhS2V5IiwiYWx0S2V5IiwiY3RybEtleSIsInNoaWZ0S2V5IiwiYnV0dG9uIiwiaW5jbHVkZXMiLCJjdXJyZW50VGFyZ2V0IiwiX2UkY3VycmVudFRhcmdldCIsInRhcmdldCIsInByZXZlbnREZWZhdWx0IiwiZGlzcGF0Y2giLCJFcnJvciIsImdldFBhdGhGcm9tU3RhdGVIZWxwZXIiLCJnZXRQYXRoRnJvbVN0YXRlIiwiaHJlZiIsImNvbmZpZyIsImFjY2Vzc2liaWxpdHlSb2xlIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbInVzZUxpbmtQcm9wcy50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

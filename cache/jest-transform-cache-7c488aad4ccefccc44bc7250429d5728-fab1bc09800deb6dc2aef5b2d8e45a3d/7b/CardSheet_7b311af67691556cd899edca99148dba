@@ -1,0 +1,108 @@
+c3e8b5514fb8657b2abcf4bdad9830ca
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+var _excluded = ["enabled", "layout", "style"];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var React = _interopRequireWildcard(require("react"));
+var _reactNative = require("react-native");
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+var _default = React.forwardRef(function CardSheet(_ref, ref) {
+  var enabled = _ref.enabled,
+    layout = _ref.layout,
+    style = _ref.style,
+    rest = (0, _objectWithoutProperties2.default)(_ref, _excluded);
+  var _React$useState = React.useState(false),
+    _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+    fill = _React$useState2[0],
+    setFill = _React$useState2[1];
+  var _React$useState3 = React.useState('auto'),
+    _React$useState4 = (0, _slicedToArray2.default)(_React$useState3, 2),
+    pointerEvents = _React$useState4[0],
+    setPointerEvents = _React$useState4[1];
+  React.useImperativeHandle(ref, function () {
+    return {
+      setPointerEvents: setPointerEvents
+    };
+  });
+  React.useEffect(function () {
+    if (typeof document === 'undefined' || !document.body) {
+      return;
+    }
+    var width = document.body.clientWidth;
+    var height = document.body.clientHeight;
+    setFill(width === layout.width && height === layout.height);
+  }, [layout.height, layout.width]);
+  return React.createElement(_reactNative.View, _extends({}, rest, {
+    pointerEvents: pointerEvents,
+    style: [enabled && fill ? styles.page : styles.card, style]
+  }));
+});
+exports.default = _default;
+var styles = _reactNative.StyleSheet.create({
+  page: {
+    minHeight: '100%'
+  },
+  card: {
+    flex: 1,
+    overflow: 'hidden'
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBO0FBQ0E7QUFBMkQ7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBQztJQUFBO01BQUE7TUFBQTtRQUFBO1VBQUFDO1FBQUE7TUFBQTtJQUFBO0lBQUE7RUFBQTtFQUFBO0FBQUE7QUFlM0QsZUFDZUMsS0FBSyxDQUFDQyxVQUFVLENBQXNCLFNBQVNDLFNBQVMsT0FFckVDLEdBQUcsRUFDSDtFQUFBLElBRkVDLE9BQU8sR0FBMEJDLEtBQWpDRCxPQUFPO0lBQUVFLE1BQU0sR0FBa0JELEtBQXhCQyxNQUFNO0lBQUVDLEtBQUssR0FBV0YsS0FBaEJFLEtBQUs7SUFBS0MsOENBQU1IO0VBR25DLHNCQUF3QkwsS0FBSyxDQUFDUyxRQUFRLENBQUMsS0FBSyxDQUFDO0lBQUE7SUFBdENDLElBQUk7SUFBRUMsT0FBTztFQUdwQix1QkFDRVgsS0FBSyxDQUFDUyxRQUFRLENBQTZCLE1BQU0sQ0FBQztJQUFBO0lBRDdDRyxhQUFhO0lBQUVDLGdCQUFnQjtFQUd0Q2IsS0FBSyxDQUFDYyxtQkFBbUIsQ0FBQ1gsR0FBRyxFQUFFLFlBQU07SUFDbkMsT0FBTztNQUFFVTtJQUFpQixDQUFDO0VBQzdCLENBQUMsQ0FBQztFQUVGYixLQUFLLENBQUNlLFNBQVMsQ0FBQyxZQUFNO0lBQ3BCLElBQUksT0FBT0MsUUFBUSxLQUFLLFdBQVcsSUFBSSxDQUFDQSxRQUFRLENBQUNDLElBQUksRUFBRTtNQUVyRDtJQUNGO0lBRUEsSUFBTUMsS0FBSyxHQUFHRixRQUFRLENBQUNDLElBQUksQ0FBQ0UsV0FBVztJQUN2QyxJQUFNQyxNQUFNLEdBQUdKLFFBQVEsQ0FBQ0MsSUFBSSxDQUFDSSxZQUFZO0lBRXpDVixPQUFPLENBQUNPLEtBQUssS0FBS1osTUFBTSxDQUFDWSxLQUFLLElBQUlFLE1BQU0sS0FBS2QsTUFBTSxDQUFDYyxNQUFNLENBQUM7RUFDN0QsQ0FBQyxFQUFFLENBQUNkLE1BQU0sQ0FBQ2MsTUFBTSxFQUFFZCxNQUFNLENBQUNZLEtBQUssQ0FBQyxDQUFDO0VBRWpDLE9BQ0VsQixvQkFBQ3NCLGlCQUFJLGVBQ0NkLElBQUk7SUFDUkksYUFBYSxFQUFFQSxhQUFjO0lBQzdCTCxLQUFLLEVBQUUsQ0FBQ0gsT0FBTyxJQUFJTSxJQUFJLEdBQUdhLE1BQU0sQ0FBQ0MsSUFBSSxHQUFHRCxNQUFNLENBQUNFLElBQUksRUFBRWxCLEtBQUs7RUFBRSxHQUM1RDtBQUVOLENBQUMsQ0FBQztBQUFBbUI7QUFFRixJQUFNSCxNQUFNLEdBQUdJLHVCQUFVLENBQUNDLE1BQU0sQ0FBQztFQUMvQkosSUFBSSxFQUFFO0lBQ0pLLFNBQVMsRUFBRTtFQUNiLENBQUM7RUFDREosSUFBSSxFQUFFO0lBQ0pLLElBQUksRUFBRSxDQUFDO0lBQ1BDLFFBQVEsRUFBRTtFQUNaO0FBQ0YsQ0FBQyxDQUFDIiwibmFtZXMiOlsiZGVmYXVsdCIsIk9iamVjdCIsIm5ld09iaiIsImNhY2hlIiwiX2V4dGVuZHMiLCJ0YXJnZXQiLCJSZWFjdCIsImZvcndhcmRSZWYiLCJDYXJkU2hlZXQiLCJyZWYiLCJlbmFibGVkIiwiX3JlZiIsImxheW91dCIsInN0eWxlIiwicmVzdCIsInVzZVN0YXRlIiwiZmlsbCIsInNldEZpbGwiLCJwb2ludGVyRXZlbnRzIiwic2V0UG9pbnRlckV2ZW50cyIsInVzZUltcGVyYXRpdmVIYW5kbGUiLCJ1c2VFZmZlY3QiLCJkb2N1bWVudCIsImJvZHkiLCJ3aWR0aCIsImNsaWVudFdpZHRoIiwiaGVpZ2h0IiwiY2xpZW50SGVpZ2h0IiwiX3JlYWN0TmF0aXZlIiwic3R5bGVzIiwicGFnZSIsImNhcmQiLCJleHBvcnRzIiwiU3R5bGVTaGVldCIsImNyZWF0ZSIsIm1pbkhlaWdodCIsImZsZXgiLCJvdmVyZmxvdyJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJDYXJkU2hlZXQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

@@ -1,0 +1,105 @@
+ec744e26dbf51faf18a28261efa4d234
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SlideFromRightIOS = exports.ScaleFromCenterAndroid = exports.RevealFromBottomAndroid = exports.ModalTransition = exports.ModalSlideFromBottomIOS = exports.ModalPresentationIOS = exports.ModalFadeTransition = exports.FadeFromBottomAndroid = exports.DefaultTransition = exports.BottomSheetAndroid = void 0;
+var _reactNative = require("react-native");
+var _CardStyleInterpolators = require("./CardStyleInterpolators");
+var _HeaderStyleInterpolators = require("./HeaderStyleInterpolators");
+var _TransitionSpecs = require("./TransitionSpecs");
+var ANDROID_VERSION_PIE = 28;
+var ANDROID_VERSION_10 = 29;
+var SlideFromRightIOS = {
+  gestureDirection: 'horizontal',
+  transitionSpec: {
+    open: _TransitionSpecs.TransitionIOSSpec,
+    close: _TransitionSpecs.TransitionIOSSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forHorizontalIOS,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.SlideFromRightIOS = SlideFromRightIOS;
+var ModalSlideFromBottomIOS = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.TransitionIOSSpec,
+    close: _TransitionSpecs.TransitionIOSSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forVerticalIOS,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.ModalSlideFromBottomIOS = ModalSlideFromBottomIOS;
+var ModalPresentationIOS = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.TransitionIOSSpec,
+    close: _TransitionSpecs.TransitionIOSSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forModalPresentationIOS,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.ModalPresentationIOS = ModalPresentationIOS;
+var FadeFromBottomAndroid = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.FadeInFromBottomAndroidSpec,
+    close: _TransitionSpecs.FadeOutToBottomAndroidSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forFadeFromBottomAndroid,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.FadeFromBottomAndroid = FadeFromBottomAndroid;
+var RevealFromBottomAndroid = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.RevealFromBottomAndroidSpec,
+    close: _TransitionSpecs.RevealFromBottomAndroidSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forRevealFromBottomAndroid,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.RevealFromBottomAndroid = RevealFromBottomAndroid;
+var ScaleFromCenterAndroid = {
+  gestureDirection: 'horizontal',
+  transitionSpec: {
+    open: _TransitionSpecs.ScaleFromCenterAndroidSpec,
+    close: _TransitionSpecs.ScaleFromCenterAndroidSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forScaleFromCenterAndroid,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.ScaleFromCenterAndroid = ScaleFromCenterAndroid;
+var BottomSheetAndroid = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.BottomSheetSlideInSpec,
+    close: _TransitionSpecs.BottomSheetSlideOutSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forBottomSheetAndroid,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.BottomSheetAndroid = BottomSheetAndroid;
+var ModalFadeTransition = {
+  gestureDirection: 'vertical',
+  transitionSpec: {
+    open: _TransitionSpecs.BottomSheetSlideInSpec,
+    close: _TransitionSpecs.BottomSheetSlideOutSpec
+  },
+  cardStyleInterpolator: _CardStyleInterpolators.forFadeFromCenter,
+  headerStyleInterpolator: _HeaderStyleInterpolators.forFade
+};
+exports.ModalFadeTransition = ModalFadeTransition;
+var DefaultTransition = _reactNative.Platform.select({
+  ios: SlideFromRightIOS,
+  android: _reactNative.Platform.Version >= ANDROID_VERSION_10 ? ScaleFromCenterAndroid : _reactNative.Platform.Version >= ANDROID_VERSION_PIE ? RevealFromBottomAndroid : FadeFromBottomAndroid,
+  default: ScaleFromCenterAndroid
+});
+exports.DefaultTransition = DefaultTransition;
+var ModalTransition = _reactNative.Platform.select({
+  ios: ModalPresentationIOS,
+  default: BottomSheetAndroid
+});
+exports.ModalTransition = ModalTransition;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,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QztBQUVGWjtBQUdPLElBQU00QixlQUFlLEdBQUdOLHFCQUFRLENBQUNDLE1BQU0sQ0FBQztFQUM3Q0MsR0FBRyxFQUFFckIsb0JBQW9CO0VBQ3pCd0IsT0FBTyxFQUFFWjtBQUNYLENBQUMsQ0FBQztBQUFDZiIsIm5hbWVzIjpbIkFORFJPSURfVkVSU0lPTl9QSUUiLCJBTkRST0lEX1ZFUlNJT05fMTAiLCJTbGlkZUZyb21SaWdodElPUyIsImdlc3R1cmVEaXJlY3Rpb24iLCJ0cmFuc2l0aW9uU3BlYyIsIm9wZW4iLCJUcmFuc2l0aW9uSU9TU3BlYyIsImNsb3NlIiwiY2FyZFN0eWxlSW50ZXJwb2xhdG9yIiwiZm9ySG9yaXpvbnRhbElPUyIsImhlYWRlclN0eWxlSW50ZXJwb2xhdG9yIiwiZm9yRmFkZSIsImV4cG9ydHMiLCJNb2RhbFNsaWRlRnJvbUJvdHRvbUlPUyIsImZvclZlcnRpY2FsSU9TIiwiTW9kYWxQcmVzZW50YXRpb25JT1MiLCJmb3JNb2RhbFByZXNlbnRhdGlvbklPUyIsIkZhZGVGcm9tQm90dG9tQW5kcm9pZCIsIkZhZGVJbkZyb21Cb3R0b21BbmRyb2lkU3BlYyIsIkZhZGVPdXRUb0JvdHRvbUFuZHJvaWRTcGVjIiwiZm9yRmFkZUZyb21Cb3R0b21BbmRyb2lkIiwiUmV2ZWFsRnJvbUJvdHRvbUFuZHJvaWQiLCJSZXZlYWxGcm9tQm90dG9tQW5kcm9pZFNwZWMiLCJmb3JSZXZlYWxGcm9tQm90dG9tQW5kcm9pZCIsIlNjYWxlRnJvbUNlbnRlckFuZHJvaWQiLCJTY2FsZUZyb21DZW50ZXJBbmRyb2lkU3BlYyIsImZvclNjYWxlRnJvbUNlbnRlckFuZHJvaWQiLCJCb3R0b21TaGVldEFuZHJvaWQiLCJCb3R0b21TaGVldFNsaWRlSW5TcGVjIiwiQm90dG9tU2hlZXRTbGlkZU91dFNwZWMiLCJmb3JCb3R0b21TaGVldEFuZHJvaWQiLCJNb2RhbEZhZGVUcmFuc2l0aW9uIiwiZm9yRmFkZUNhcmQiLCJEZWZhdWx0VHJhbnNpdGlvbiIsIlBsYXRmb3JtIiwic2VsZWN0IiwiaW9zIiwiYW5kcm9pZCIsIlZlcnNpb24iLCJkZWZhdWx0IiwiTW9kYWxUcmFuc2l0aW9uIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbIlRyYW5zaXRpb25QcmVzZXRzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6W251bGxdfQ==

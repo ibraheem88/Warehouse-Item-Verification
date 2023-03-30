@@ -1,0 +1,70 @@
+41d8f935f4394b38ecb0eabc4b4ee97a
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useComponent;
+var React = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+var NavigationContent = function NavigationContent(_ref) {
+  var render = _ref.render,
+    children = _ref.children;
+  return render(children);
+};
+function useComponent(render) {
+  var renderRef = React.useRef(render);
+  renderRef.current = render;
+  React.useEffect(function () {
+    renderRef.current = null;
+  });
+  return React.useRef(function (_ref2) {
+    var children = _ref2.children;
+    var render = renderRef.current;
+    if (render === null) {
+      throw new Error('The returned component must be rendered in the same render phase as the hook.');
+    }
+    return React.createElement(NavigationContent, {
+      render: render
+    }, children);
+  }).current;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFBK0I7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7SUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO01BQUE7TUFBQTtRQUFBQztNQUFBO1FBQUFDO01BQUE7SUFBQTtFQUFBO0VBQUFBO0VBQUE7SUFBQUM7RUFBQTtFQUFBO0FBQUE7QUFTL0IsSUFBTUMsaUJBQWlCLEdBQUcsU0FBcEJBLGlCQUFpQixDQUFHQyxNQUFpQztFQUFBLElBQTlCQyxNQUFNLEdBQW1CRCxLQUF6QkMsTUFBTTtJQUFFQyxXQUFpQkYsS0FBakJFO0VBQ25DLE9BQU9ELE1BQU0sQ0FBQ0MsUUFBUSxDQUFDO0FBQ3pCLENBQUM7QUFFYyxTQUFTQyxZQUFZLENBQUNGLE1BQWMsRUFBRTtFQUNuRCxJQUFNRyxTQUFTLEdBQUdDLEtBQUssQ0FBQ0MsTUFBTSxDQUFnQkwsTUFBTSxDQUFDO0VBS3JERyxTQUFTLENBQUNHLE9BQU8sR0FBR04sTUFBTTtFQUUxQkksS0FBSyxDQUFDRyxTQUFTLENBQUMsWUFBTTtJQUNwQkosU0FBUyxDQUFDRyxPQUFPLEdBQUcsSUFBSTtFQUMxQixDQUFDLENBQUM7RUFFRixPQUFPRixLQUFLLENBQUNDLE1BQU0sQ0FBQyxpQkFBaUQ7SUFBQSxJQUE5Q0osV0FBeUNPLE1BQXpDUDtJQUNyQixJQUFNRCxNQUFNLEdBQUdHLFNBQVMsQ0FBQ0csT0FBTztJQUVoQyxJQUFJTixNQUFNLEtBQUssSUFBSSxFQUFFO01BQ25CLE1BQU0sSUFBSVMsS0FBSyxDQUNiLCtFQUErRSxDQUNoRjtJQUNIO0lBRUEsT0FBT0wsb0JBQUNOLGlCQUFpQjtNQUFDRSxNQUFNLEVBQUVBO0lBQU8sR0FBRUMsUUFBUSxDQUFxQjtFQUMxRSxDQUFDLENBQUMsQ0FBQ0ssT0FBTztBQUNaIiwibmFtZXMiOlsiZGVmYXVsdCIsIk9iamVjdCIsIm5ld09iaiIsImNhY2hlIiwiTmF2aWdhdGlvbkNvbnRlbnQiLCJfcmVmIiwicmVuZGVyIiwiY2hpbGRyZW4iLCJ1c2VDb21wb25lbnQiLCJyZW5kZXJSZWYiLCJSZWFjdCIsInVzZVJlZiIsImN1cnJlbnQiLCJ1c2VFZmZlY3QiLCJfcmVmMiIsIkVycm9yIl0sInNvdXJjZVJvb3QiOiIuLi8uLi9zcmMiLCJzb3VyY2VzIjpbInVzZUNvbXBvbmVudC50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

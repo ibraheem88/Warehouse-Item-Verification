@@ -1,0 +1,61 @@
+5ed19ea8d46cd28b47a03c6de5f724e1
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useTransitionProgress;
+var React = _interopRequireWildcard(require("react"));
+var _TransitionProgressContext = _interopRequireDefault(require("./TransitionProgressContext"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useTransitionProgress() {
+  var progress = React.useContext(_TransitionProgressContext.default);
+  if (progress === undefined) {
+    throw new Error("Couldn't find values for transition progress. Are you inside a screen in Native Stack?");
+  }
+  return progress;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFFQTtBQUFvRTtFQUFBO0lBQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBO01BQUE7UUFBQUM7TUFBQTtRQUFBQztNQUFBO0lBQUE7RUFBQTtFQUFBQTtFQUFBO0lBQUFDO0VBQUE7RUFBQTtBQUFBO0FBRXJELFNBQVNDLHFCQUFxQixHQUFHO0VBQzlDLElBQU1DLFFBQVEsR0FBR0MsS0FBSyxDQUFDQyxVQUFVLENBQUNDLGtDQUF5QixDQUFDO0VBRTVELElBQUlILFFBQVEsS0FBS0ksU0FBUyxFQUFFO0lBQzFCLE1BQU0sSUFBSUMsS0FBSyxDQUNiLHdGQUF3RixDQUN6RjtFQUNIO0VBRUEsT0FBT0wsUUFBUTtBQUNqQiIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsInVzZVRyYW5zaXRpb25Qcm9ncmVzcyIsInByb2dyZXNzIiwiUmVhY3QiLCJ1c2VDb250ZXh0IiwiVHJhbnNpdGlvblByb2dyZXNzQ29udGV4dCIsInVuZGVmaW5lZCIsIkVycm9yIl0sInNvdXJjZXMiOlsidXNlVHJhbnNpdGlvblByb2dyZXNzLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBSZWFjdCBmcm9tICdyZWFjdCc7XG5cbmltcG9ydCBUcmFuc2l0aW9uUHJvZ3Jlc3NDb250ZXh0IGZyb20gJy4vVHJhbnNpdGlvblByb2dyZXNzQ29udGV4dCc7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIHVzZVRyYW5zaXRpb25Qcm9ncmVzcygpIHtcbiAgY29uc3QgcHJvZ3Jlc3MgPSBSZWFjdC51c2VDb250ZXh0KFRyYW5zaXRpb25Qcm9ncmVzc0NvbnRleHQpO1xuXG4gIGlmIChwcm9ncmVzcyA9PT0gdW5kZWZpbmVkKSB7XG4gICAgdGhyb3cgbmV3IEVycm9yKFxuICAgICAgXCJDb3VsZG4ndCBmaW5kIHZhbHVlcyBmb3IgdHJhbnNpdGlvbiBwcm9ncmVzcy4gQXJlIHlvdSBpbnNpZGUgYSBzY3JlZW4gaW4gTmF0aXZlIFN0YWNrP1wiXG4gICAgKTtcbiAgfVxuXG4gIHJldHVybiBwcm9ncmVzcztcbn1cbiJdfQ==

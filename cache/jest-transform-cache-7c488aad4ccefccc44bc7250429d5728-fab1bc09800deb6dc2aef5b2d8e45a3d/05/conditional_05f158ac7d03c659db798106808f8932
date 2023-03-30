@@ -1,0 +1,18 @@
+721897394675034903e305dcf310cf85
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = conditional;
+var _reactNative = require("react-native");
+var _reactNative$Animated = _reactNative.Animated,
+  add = _reactNative$Animated.add,
+  multiply = _reactNative$Animated.multiply;
+function conditional(condition, main, fallback) {
+  return add(multiply(condition, main), multiply(condition.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0]
+  }), fallback));
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUE7QUFFQSw0QkFBMEJBLHFCQUFRO0VBQTFCQyxHQUFHLHlCQUFIQSxHQUFHO0VBQUVDO0FBU0UsU0FBU0MsV0FBVyxDQUNqQ0MsU0FBeUMsRUFDekNDLElBQW9DLEVBQ3BDQyxRQUF3QyxFQUN4QztFQU9BLE9BQU9MLEdBQUcsQ0FDUkMsUUFBUSxDQUFDRSxTQUFTLEVBQUVDLElBQUksQ0FBQyxFQUN6QkgsUUFBUSxDQUNORSxTQUFTLENBQUNHLFdBQVcsQ0FBQztJQUNwQkMsVUFBVSxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQztJQUNsQkMsV0FBVyxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUM7RUFDcEIsQ0FBQyxDQUFDLEVBQ0ZILFFBQVEsQ0FDVCxDQUNGO0FBQ0giLCJuYW1lcyI6WyJBbmltYXRlZCIsImFkZCIsIm11bHRpcGx5IiwiY29uZGl0aW9uYWwiLCJjb25kaXRpb24iLCJtYWluIiwiZmFsbGJhY2siLCJpbnRlcnBvbGF0ZSIsImlucHV0UmFuZ2UiLCJvdXRwdXRSYW5nZSJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJjb25kaXRpb25hbC50c3giXSwic291cmNlc0NvbnRlbnQiOltudWxsXX0=

@@ -1,0 +1,72 @@
+ba6b22a363c777720a44c30faa6f669c
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useOnRouteFocus;
+var React = _interopRequireWildcard(require("react"));
+var _NavigationBuilderContext = _interopRequireDefault(require("./NavigationBuilderContext"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+function useOnRouteFocus(_ref) {
+  var router = _ref.router,
+    getState = _ref.getState,
+    sourceRouteKey = _ref.key,
+    setState = _ref.setState;
+  var _React$useContext = React.useContext(_NavigationBuilderContext.default),
+    onRouteFocusParent = _React$useContext.onRouteFocus;
+  return React.useCallback(function (key) {
+    var state = getState();
+    var result = router.getStateForRouteFocus(state, key);
+    if (result !== state) {
+      setState(result);
+    }
+    if (onRouteFocusParent !== undefined && sourceRouteKey !== undefined) {
+      onRouteFocusParent(sourceRouteKey);
+    }
+  }, [getState, onRouteFocusParent, router, setState, sourceRouteKey]);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBS0E7QUFFQTtBQUFrRTtFQUFBO0lBQUFBO0VBQUE7QUFBQTtBQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBO01BQUE7UUFBQUM7TUFBQTtRQUFBQztNQUFBO0lBQUE7RUFBQTtFQUFBQTtFQUFBO0lBQUFDO0VBQUE7RUFBQTtBQUFBO0FBY25ELFNBQVNDLGVBQWUsT0FLbkI7RUFBQSxJQUpsQkMsTUFBTSxHQUlVQyxLQUpoQkQsTUFBTTtJQUNORSxRQUFRLEdBR1FELEtBSGhCQyxRQUFRO0lBQ0hDLGNBQWMsR0FFSEYsS0FGaEJHLEdBQUc7SUFDSEMsV0FDZ0JKLEtBRGhCSTtFQUVBLHdCQUE2Q0MsS0FBSyxDQUFDQyxVQUFVLENBQzNEQyxpQ0FBd0IsQ0FDekI7SUFGcUJDLHVDQUFkQyxZQUFZO0VBSXBCLE9BQU9KLEtBQUssQ0FBQ0ssV0FBVyxDQUNyQlAsYUFBVyxFQUFLO0lBQ2YsSUFBTVEsS0FBSyxHQUFHVixRQUFRLEVBQUU7SUFDeEIsSUFBTVcsTUFBTSxHQUFHYixNQUFNLENBQUNjLHFCQUFxQixDQUFDRixLQUFLLEVBQUVSLEdBQUcsQ0FBQztJQUV2RCxJQUFJUyxNQUFNLEtBQUtELEtBQUssRUFBRTtNQUNwQlAsUUFBUSxDQUFDUSxNQUFNLENBQUM7SUFDbEI7SUFFQSxJQUFJSixrQkFBa0IsS0FBS00sU0FBUyxJQUFJWixjQUFjLEtBQUtZLFNBQVMsRUFBRTtNQUNwRU4sa0JBQWtCLENBQUNOLGNBQWMsQ0FBQztJQUNwQztFQUNGLENBQUMsRUFDRCxDQUFDRCxRQUFRLEVBQUVPLGtCQUFrQixFQUFFVCxNQUFNLEVBQUVLLFFBQVEsRUFBRUYsY0FBYyxDQUFDLENBQ2pFO0FBQ0giLCJuYW1lcyI6WyJkZWZhdWx0IiwiT2JqZWN0IiwibmV3T2JqIiwiY2FjaGUiLCJ1c2VPblJvdXRlRm9jdXMiLCJyb3V0ZXIiLCJfcmVmIiwiZ2V0U3RhdGUiLCJzb3VyY2VSb3V0ZUtleSIsImtleSIsInNldFN0YXRlIiwiUmVhY3QiLCJ1c2VDb250ZXh0IiwiTmF2aWdhdGlvbkJ1aWxkZXJDb250ZXh0Iiwib25Sb3V0ZUZvY3VzUGFyZW50Iiwib25Sb3V0ZUZvY3VzIiwidXNlQ2FsbGJhY2siLCJzdGF0ZSIsInJlc3VsdCIsImdldFN0YXRlRm9yUm91dGVGb2N1cyIsInVuZGVmaW5lZCJdLCJzb3VyY2VSb290IjoiLi4vLi4vc3JjIiwic291cmNlcyI6WyJ1c2VPblJvdXRlRm9jdXMudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19

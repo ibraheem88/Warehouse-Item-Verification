@@ -1,0 +1,19 @@
+455a2710f69f4c1b8f1e473165e996a2
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "RNRenderer", {
+  enumerable: true,
+  get: function get() {
+    return _ReactNative.default;
+  }
+});
+var _ReactNative = _interopRequireDefault(require("react-native/Libraries/Renderer/shims/ReactNative"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFFQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJSTlJlbmRlcmVyLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBAdHlwZXNjcmlwdC1lc2xpbnQvYmFuLXRzLWNvbW1lbnRcbi8vIEB0cy1ub2NoZWNrXG5leHBvcnQgeyBkZWZhdWx0IGFzIFJOUmVuZGVyZXIgfSBmcm9tICdyZWFjdC1uYXRpdmUvTGlicmFyaWVzL1JlbmRlcmVyL3NoaW1zL1JlYWN0TmF0aXZlJztcbiJdfQ==

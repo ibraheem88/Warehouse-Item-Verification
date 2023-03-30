@@ -1,0 +1,66 @@
+a3ffa0f65f0e1e0b09880133267007ee
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ScheduleUpdateContext = void 0;
+exports.default = useScheduleUpdate;
+var React = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== "function") return null;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj;
+  }
+  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+    return {
+      default: obj
+    };
+  }
+  var cache = _getRequireWildcardCache(nodeInterop);
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+  for (var key in obj) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+  newObj.default = obj;
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+  return newObj;
+}
+var MISSING_CONTEXT_ERROR = "Couldn't find a schedule context.";
+var ScheduleUpdateContext = React.createContext({
+  scheduleUpdate: function scheduleUpdate() {
+    throw new Error(MISSING_CONTEXT_ERROR);
+  },
+  flushUpdates: function flushUpdates() {
+    throw new Error(MISSING_CONTEXT_ERROR);
+  }
+});
+exports.ScheduleUpdateContext = ScheduleUpdateContext;
+function useScheduleUpdate(callback) {
+  var _React$useContext = React.useContext(ScheduleUpdateContext),
+    scheduleUpdate = _React$useContext.scheduleUpdate,
+    flushUpdates = _React$useContext.flushUpdates;
+  scheduleUpdate(callback);
+  React.useEffect(flushUpdates);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBO0FBQStCO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtFQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtFQUFBO0lBQUE7TUFBQUE7SUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtFQUFBO0VBQUE7SUFBQTtNQUFBO01BQUE7UUFBQUM7TUFBQTtRQUFBQztNQUFBO0lBQUE7RUFBQTtFQUFBQTtFQUFBO0lBQUFDO0VBQUE7RUFBQTtBQUFBO0FBRS9CLElBQU1DLHFCQUFxQixHQUFHLG1DQUFtQztBQUUxRCxJQUFNQyxxQkFBcUIsR0FBR0MsS0FBSyxDQUFDQyxhQUFhLENBR3JEO0VBQ0RDLGNBQWMsNEJBQUc7SUFDZixNQUFNLElBQUlDLEtBQUssQ0FBQ0wscUJBQXFCLENBQUM7RUFDeEMsQ0FBQztFQUNETSxZQUFZLDBCQUFHO0lBQ2IsTUFBTSxJQUFJRCxLQUFLLENBQUNMLHFCQUFxQixDQUFDO0VBQ3hDO0FBQ0YsQ0FBQyxDQUFDO0FBRUZPO0FBT2UsU0FBU0MsaUJBQWlCLENBQUNDLFFBQW9CLEVBQUU7RUFDOUQsd0JBQXlDUCxLQUFLLENBQUNRLFVBQVUsQ0FDdkRULHFCQUFxQixDQUN0QjtJQUZPRyxjQUFjLHFCQUFkQSxjQUFjO0lBQUVFO0VBSXhCRixjQUFjLENBQUNLLFFBQVEsQ0FBQztFQUV4QlAsS0FBSyxDQUFDUyxTQUFTLENBQUNMLFlBQVksQ0FBQztBQUMvQiIsIm5hbWVzIjpbImRlZmF1bHQiLCJPYmplY3QiLCJuZXdPYmoiLCJjYWNoZSIsIk1JU1NJTkdfQ09OVEVYVF9FUlJPUiIsIlNjaGVkdWxlVXBkYXRlQ29udGV4dCIsIlJlYWN0IiwiY3JlYXRlQ29udGV4dCIsInNjaGVkdWxlVXBkYXRlIiwiRXJyb3IiLCJmbHVzaFVwZGF0ZXMiLCJleHBvcnRzIiwidXNlU2NoZWR1bGVVcGRhdGUiLCJjYWxsYmFjayIsInVzZUNvbnRleHQiLCJ1c2VFZmZlY3QiXSwic291cmNlUm9vdCI6Ii4uLy4uL3NyYyIsInNvdXJjZXMiOlsidXNlU2NoZWR1bGVVcGRhdGUudHN4Il0sInNvdXJjZXNDb250ZW50IjpbbnVsbF19
